@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//カードの情報を管理するクラス
+/// <summary>
+/// カードの情報を管理するクラス
+/// </summary>
 public class CardInfo : MonoBehaviour
 { 
     GameObject choose;
@@ -48,5 +50,15 @@ public class CardInfo : MonoBehaviour
     public void TouchPocess()
     {
         choose.SetActive(true);
+    }
+    public void ResetCard()
+    {
+        Debug.Log("カードのリセット");
+        GameObject img = transform.Find("Img").gameObject;
+        img.SetActive(false);
+    }
+    public void DeletCard()
+    {
+       Destroy(gameObject);
     }
 }

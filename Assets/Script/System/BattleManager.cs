@@ -3,7 +3,12 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
 
-//ダメージ計算関数
+/// <summary>
+/// ダメージ計算関数
+/// </summary>
+/// <param name="target">対象</param>
+/// <param name="_damage">ダメージ量</param>
+/// <returns></returns>
 float TakeDamage(GameObject target, float _damage)
     {
         EnemyBase enemy= target.GetComponent<EnemyBase>();
@@ -14,3 +19,4 @@ float TakeDamage(GameObject target, float _damage)
 
     }    
 }
+
