@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (var card in _selectedCard)
         {
+            if (card == _selectedCard[0]) continue;
             CardInfo cardInfo= card.GetComponent<CardInfo>();
             int num = cardInfo.GetComponent<CardInfo>().GetCardNum();
             
@@ -101,7 +102,8 @@ public class PlayerController : MonoBehaviour
             }
             else if (num == firstNum)
             {
-                SameCardProcess();
+                SameCardProcess(firstCardInfo, cardInfo);
+                _selectedCard.Clear();
 
             }
         }
@@ -109,10 +111,12 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 同じカードが選択されたときの処理
     /// </summary>
-    async void SameCardProcess()
+    async void SameCardProcess(CardInfo card1, CardInfo card2)
     {
         await UniTask.Delay(1000);
-      
+        Destroy(card1.gameObject);
+        Destroy(card2.gameObject);
+
     }
     /// <summary>
     /// 違うカードが選択されたときの処理

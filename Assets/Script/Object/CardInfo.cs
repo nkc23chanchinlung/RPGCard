@@ -9,7 +9,9 @@ public class CardInfo : MonoBehaviour
     GameObject choose;
     private void Awake()
     {
+        GameObject img = transform.Find("Img").gameObject;
         choose = transform.Find("Choose").gameObject;
+        if(GameManager.instance._isDebugMode) img.SetActive(true);
     }
     private void FixedUpdate()
     {
