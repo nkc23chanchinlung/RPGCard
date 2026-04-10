@@ -13,7 +13,7 @@ public class UiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance._isDebugMode)
+        if (GameManager.Instance._isDebugMode)
         {
             _debug_Text.gameObject.SetActive(true);
         }

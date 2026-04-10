@@ -9,15 +9,18 @@ public class CardInfo : MonoBehaviour
     GameObject choose;
     private void Awake()
     {
-        GameObject img = transform.Find("Img").gameObject;
+        
         choose = transform.Find("Choose").gameObject;
-        if(GameManager.instance._isDebugMode) img.SetActive(true);
     }
     private void FixedUpdate()
     {
+        GameObject img = transform.Find("Img").gameObject;
         choose.SetActive(false);
-    }
+        if (GameManager.Instance._isDebugMode) img.SetActive(true);
+        else img.SetActive(false);
 
+    }
+    //カードの効果連想配列
     public Dictionary<string, int> cardDic = new Dictionary<string, int>()
     {
         {"attack",1},

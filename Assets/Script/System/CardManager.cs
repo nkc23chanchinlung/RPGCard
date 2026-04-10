@@ -12,16 +12,23 @@ public class CardManager : MonoBehaviour
     [SerializeField]int _instanceX, _instanceY; //カードの生成位置
     [SerializeField]Sprite[] _cardSprite; //カードのスプライト
     [SerializeField] List<CardInfo> _cardInfoList; //カードの情報を管理するリスト
+     int _sameCardValue = 0; //同じカードの値を管理する変数
+    DataManager _dataManager;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        _dataManager = DataManager.Instance;
+    }
     void Start()
     {
         InstanceCard(2.0f,-4);
         
     }
-
-    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        _dataManager._sameCardValue = _sameCardValue; 
+    }
     void Update()
     {
         
@@ -63,7 +70,12 @@ public class CardManager : MonoBehaviour
         }
         CheckCard();
     }
-    
+    /// <summary>
+    /// カード移動関数
+    /// </summary>
+    /// <param name="target">移動オブジェクト</param>
+    /// <param name="position">目的地</param>
+    /// <returns></returns>
     async UniTask MoveCardAsync(GameObject target, Vector3 position)
     {
         float duration = 0.5f; // 移動にかかる時間
@@ -90,7 +102,9 @@ public class CardManager : MonoBehaviour
                     cardA = -1;
                     cardB = -1;
                     Debug.Log("同じカードがある");
+                    _sameCardValue++;
                 }
+               
             }
         }
     }

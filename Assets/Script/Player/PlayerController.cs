@@ -5,9 +5,9 @@ public class PlayerController : MonoBehaviour
 {
    [SerializeField] List<GameObject> _selectedCard = new List<GameObject>(); //選択されたカードのリスト
     [SerializeField] int _cardLimit; //選択できるカードの上限
+    DataManager dataManager;
 
-
-
+    
     void Update()
     {
         SelectCard();
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
             CardInfo cardInfo = hit.collider.gameObject.GetComponent<CardInfo>();
             if(cardInfo == null) return null;
             cardInfo.TouchPocess();
-            if (GameManager.instance._isDebugMode)
+            if (GameManager.Instance._isDebugMode)
             {
                 Debug.Log("カードの番号は" + cardInfo.GetCardNum());
 
