@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        CheakGameManagerExist();
         Instance = this;
     }
     private void FixedUpdate()
@@ -23,6 +24,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+    void CheakGameManagerExist()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+        else if(Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     

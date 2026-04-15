@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("カードを選択");
             _selectedCard.Add(hitObject);
 
-            CardInfo cardInfo = hitObject.GetComponent<CardInfo>();
+            CardManager cardInfo = hitObject.GetComponent<CardManager>();
             if (cardInfo != null)
             {
                 cardInfo.ShowSprite();
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            CardInfo cardInfo = hit.collider.gameObject.GetComponent<CardInfo>();
+            CardManager cardInfo = hit.collider.gameObject.GetComponent<CardManager>();
             if(cardInfo == null) return null;
             cardInfo.TouchPocess();
             if (GameManager.Instance._isDebugMode)
@@ -85,14 +85,14 @@ public class PlayerController : MonoBehaviour
         //}
 
         if (_selectedCard.Count <= 1) return;
-        CardInfo firstCardInfo = _selectedCard[0]. GetComponent<CardInfo>();
+        CardManager firstCardInfo = _selectedCard[0]. GetComponent<CardManager>();
         int firstNum = firstCardInfo.GetCardNum();
 
         foreach (var card in _selectedCard)
         {
             if (card == _selectedCard[0]) continue;
-            CardInfo cardInfo= card.GetComponent<CardInfo>();
-            int num = cardInfo.GetComponent<CardInfo>().GetCardNum();
+            CardManager cardInfo= card.GetComponent<CardManager>();
+            int num = cardInfo.GetComponent<CardManager>().GetCardNum();
             
             if (num != firstNum)
             {
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 同じカードが選択されたときの処理
     /// </summary>
-    async void SameCardProcess(CardInfo card1, CardInfo card2)
+    async void SameCardProcess(CardManager card1, CardManager card2)
     {
         await UniTask.Delay(1000);
         Destroy(card1.gameObject);
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="card1">カード1</param>
     /// <param name="card2">カード2</param>
-    async void DifferentCardProcess(CardInfo card1, CardInfo card2)
+    async void DifferentCardProcess(CardManager card1, CardManager card2)
     {
         await UniTask.Delay(1000);
         card1.ResetCard();

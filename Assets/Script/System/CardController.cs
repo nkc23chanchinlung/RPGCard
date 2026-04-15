@@ -3,15 +3,16 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
 
+//カードの生成と管理を行うクラス
 
-public class CardManager : MonoBehaviour
+public class CardController : MonoBehaviour
 {
     [SerializeField] GameObject _cardPre; //カードのプレハブ
     
     int _cardNum = 0; //カードの枚数
     [SerializeField]int _instanceX, _instanceY; //カードの生成位置
     [SerializeField]Sprite[] _cardSprite; //カードのスプライト
-    [SerializeField] List<CardInfo> _cardInfoList; //カードの情報を管理するリスト
+    [SerializeField] List<CardManager> _cardInfoList; //カードの情報を管理するリスト
      int _sameCardValue = 0; //同じカードの値を管理する変数
     DataManager _dataManager;
 
@@ -54,7 +55,7 @@ public class CardManager : MonoBehaviour
 
                 var img = instobj.transform.Find("Img").GetComponent<SpriteRenderer>();
                 
-                CardInfo cardInfo = instobj.GetComponent<CardInfo>();
+                CardManager cardInfo = instobj.GetComponent<CardManager>();
                 _cardInfoList.Add(cardInfo);
                 cardInfo.SetCardNum(Random.Range(0, _cardSprite.Length));
 
@@ -90,11 +91,11 @@ public class CardManager : MonoBehaviour
     {
         for (int i = 0; i < _cardInfoList.Count; i++)
         {
-            int cardA = _cardInfoList[i].GetComponent<CardInfo>().GetCardNum();
+            int cardA = _cardInfoList[i].GetComponent<CardManager>().GetCardNum();
 
             for (int j = i + 1; j < _cardInfoList.Count; j++)
             {
-                int cardB = _cardInfoList[j].GetComponent<CardInfo>().GetCardNum();
+                int cardB = _cardInfoList[j].GetComponent<CardManager>().GetCardNum();
 
                 if (cardA == cardB)
                 {
