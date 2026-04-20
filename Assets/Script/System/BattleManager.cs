@@ -1,5 +1,7 @@
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
-
+//í“¬ŠÇ—ƒNƒ‰ƒX
 public class BattleManager : MonoBehaviour
 {
 
@@ -17,6 +19,9 @@ float TakeDamage(GameObject target, float _damage)
 
         return _damage;
 
-    }    
+    }
+    
+   
+
 }
 

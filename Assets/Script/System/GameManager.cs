@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         CheakGameManagerExist();
-        Instance = this;
     }
     private void FixedUpdate()
     {

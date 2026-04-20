@@ -1,16 +1,26 @@
-using UnityEngine;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
    [SerializeField] List<GameObject> _selectedCard = new List<GameObject>(); //選択されたカードのリスト
     [SerializeField] int _cardLimit; //選択できるカードの上限
     DataManager dataManager;
+    [SerializeField]BattleManager battleManager;
+    [SerializeField] GameObject _enemy;
+    [SerializeField] GameObject[] _attackEffect;//0:斬撃
 
-    
     void Update()
     {
         SelectCard();
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+           AttackProcess(_enemy.transform, 0,0).Forget();
+            
+            
+        }
 
     }
     private void FixedUpdate()
@@ -32,10 +42,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("カードを選択");
             _selectedCard.Add(hitObject);
 
-            CardManager cardInfo = hitObject.GetComponent<CardManager>();
-            if (cardInfo != null)
+            CardManager cardmanager = hitObject.GetComponent<CardManager>();
+            if (cardmanager != null)
             {
-                cardInfo.ShowSprite();
+                cardmanager.ShowSprite();
             }
         }
 
@@ -59,12 +69,12 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            CardManager cardInfo = hit.collider.gameObject.GetComponent<CardManager>();
-            if(cardInfo == null) return null;
-            cardInfo.TouchPocess();
+            CardManager cardmanager = hit.collider.gameObject.GetComponent<CardManager>();
+            if(cardmanager == null) return null;
+            cardmanager.TouchPocess();
             if (GameManager.Instance._isDebugMode)
             {
-                Debug.Log("カードの番号は" + cardInfo.GetCardNum());
+                Debug.Log("カードの番号は" + cardmanager.GetCardNum());
 
             }
             return hit.collider.gameObject;
@@ -134,6 +144,30 @@ public class PlayerController : MonoBehaviour
     public int  GetSameCardNum(int num)
     {
         return num;
+    }
+    /// <summary>
+    /// 攻撃処理
+    /// </summary>
+    /// <param name="target">対象</param>
+    /// <param name="atk">攻撃力</param>
+    /// <param name="atkEffectIndex">攻撃エフェクトの
+    /// <returns></returns>
+    public async UniTask AttackProcess(Transform target, int atk,int atkEffectIndex)
+    {
+        float origin = -6f; //原点
+
+        transform.DOMoveX(target.position.x-2f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            Instantiate(_attackEffect[atkEffectIndex], target.position+new Vector3(0,1,0), Quaternion.identity);
+
+            target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
+        });
+
+        
+        await UniTask.Delay(TimeSpan.FromSeconds(1));
+
+        transform.DOMoveX(origin, 0.5f).SetEase(Ease.OutQuad);
+        await UniTask.Yield();
     }
 
 }

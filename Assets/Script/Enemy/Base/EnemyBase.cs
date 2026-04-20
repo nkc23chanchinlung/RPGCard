@@ -20,4 +20,12 @@ public class EnemyBase : MonoBehaviour
     {
         
     }
+    public void TakeDamage(int Dmg)
+    {
+        Hp -= Dmg;
+        if (Hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
