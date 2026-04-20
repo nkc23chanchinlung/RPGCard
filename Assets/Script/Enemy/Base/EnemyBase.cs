@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    [Header("Status")]
     public float MaxHP;
     public float Hp;
     public int Attack;

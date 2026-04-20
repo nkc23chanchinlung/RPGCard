@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
         SelectCard();
         if (Input.GetKeyDown(KeyCode.A))
         {
-           AttackProcess(_enemy.transform, 0,0).Forget();
+           AttackProcess(_enemy.transform, 10,0).Forget();
             
             
         }
