@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour
     async void SameCardProcess(CardManager card1, CardManager card2)
     {
         await UniTask.Delay(1000);
+        AttackProcess(_enemy.transform, 10, 0).Forget();
         Destroy(card1.gameObject);
         Destroy(card2.gameObject);
 

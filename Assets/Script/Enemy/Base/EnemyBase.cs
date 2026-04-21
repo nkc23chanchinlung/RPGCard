@@ -56,7 +56,7 @@ public class EnemyBase : MonoBehaviour
             Camera.main.transform.position = startPos + Random.insideUnitSphere * strength;
             await UniTask.Yield();
         }
-        transform.position = startPos;
+        Camera.main.transform.position = startPos;
     }
 
 
