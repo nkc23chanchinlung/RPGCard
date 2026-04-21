@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Slime : EnemyBase
 {
+    bool _isAttacking; // 攻撃中かどうかのフラグ
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -11,14 +11,14 @@ public class CardManager : MonoBehaviour
     {
         
         Outline = transform.Find("Choose").gameObject;
+        GameObject img = transform.Find("Img").gameObject;
+        
+        if (GameManager.Instance._isDebugMode) img.SetActive(true);
+        else img.SetActive(false);
     }
     private void FixedUpdate()
     {
-        GameObject img = transform.Find("Img").gameObject;
         Outline.SetActive(false);
-        if (GameManager.Instance._isDebugMode) img.SetActive(true);
-        else img.SetActive(false);
-
     }
     //カードの効果連想配列
     public Dictionary<string, int> cardDic = new Dictionary<string, int>()
