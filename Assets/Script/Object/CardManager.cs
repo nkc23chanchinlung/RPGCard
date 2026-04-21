@@ -6,16 +6,16 @@ using UnityEngine;
 /// </summary>
 public class CardManager : MonoBehaviour
 { 
-    GameObject choose;
+    GameObject Outline;
     private void Awake()
     {
         
-        choose = transform.Find("Choose").gameObject;
+        Outline = transform.Find("Choose").gameObject;
     }
     private void FixedUpdate()
     {
         GameObject img = transform.Find("Img").gameObject;
-        choose.SetActive(false);
+        Outline.SetActive(false);
         if (GameManager.Instance._isDebugMode) img.SetActive(true);
         else img.SetActive(false);
 
@@ -54,7 +54,7 @@ public class CardManager : MonoBehaviour
     }
     public void TouchPocess()
     {
-        choose.SetActive(true);
+        Outline.SetActive(true);
     }
     public void ResetCard()
     {

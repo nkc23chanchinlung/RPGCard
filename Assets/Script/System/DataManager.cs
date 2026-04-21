@@ -7,10 +7,12 @@ public class DataManager : MonoBehaviour
     public int _killedMonsterValus { get; set; } //倒したモンスターの値を管理する変数
     public static DataManager Instance; //シングルトンインスタンス
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
         Instance = this;
+        Debug.Log("DataManagerが呼び出した");
     }
+    
 
     // Update is called once per frame
     void Update()

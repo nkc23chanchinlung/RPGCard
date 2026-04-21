@@ -19,16 +19,18 @@ public class CardController : MonoBehaviour
 
     private void Awake()
     {
-        _dataManager = DataManager.Instance;
+        
     }
     void Start()
     {
+        _dataManager = DataManager.Instance;
         InstanceCard(2.0f,-4);
         
+
     }
     private void FixedUpdate()
     {
-       // _dataManager._sameCardValue = _sameCardValue; 
+       _dataManager._sameCardValue = _sameCardValue; 
     }
     void Update()
     {
