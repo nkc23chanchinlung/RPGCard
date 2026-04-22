@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 //カードの生成と管理を行うクラス
 
-public class CardController : MonoBehaviour
+public class CardManager : MonoBehaviour
 {
     [SerializeField] GameObject _cardPre; //カードのプレハブ
     
     int _cardNum = 0; //カードの枚数
     [SerializeField]int _instanceX, _instanceY; //カードの生成位置
     [SerializeField]Sprite[] _cardSprite; //カードのスプライト
-    [SerializeField] List<CardManager> _instantCardInfoList; //カードの情報を管理するリスト
+    [SerializeField] List<Card> _instantCardInfoList; //カードの情報を管理するリスト
      int _sameCardValue = 0; //同じカードの値を管理する変数
     DataManager _dataManager;
 
@@ -57,7 +57,7 @@ public class CardController : MonoBehaviour
 
                 var img = instobj.transform.Find("Img").GetComponent<SpriteRenderer>();
                 
-                CardManager cardInfo = instobj.GetComponent<CardManager>();
+                Card cardInfo = instobj.GetComponent<Card>();
                 _instantCardInfoList.Add(cardInfo);
                 cardInfo.SetCardNum(Random.Range(0, _cardSprite.Length));
 
@@ -89,15 +89,18 @@ public class CardController : MonoBehaviour
         await UniTask.Yield();
     }
 
+    /// <summary>
+    /// 生成したカードチェック関数
+    /// </summary>
     void CheckCard()
     {
         for (int i = 0; i < _instantCardInfoList.Count; i++)
         {
-            int cardA = _instantCardInfoList[i].GetComponent<CardManager>().GetCardNum();
+            int cardA = _instantCardInfoList[i].GetComponent<Card>().GetCardNum();
 
             for (int j = i + 1; j < _instantCardInfoList.Count; j++)
             {
-                int cardB = _instantCardInfoList[j].GetComponent<CardManager>().GetCardNum();
+                int cardB = _instantCardInfoList[j].GetComponent<Card>().GetCardNum();
 
                 if (cardA == cardB)
                 {

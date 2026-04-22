@@ -10,14 +10,14 @@ public class PlayerController : MonoBehaviour
     DataManager dataManager;
     [SerializeField]BattleManager battleManager;
     [SerializeField] GameObject _enemy;
-    [SerializeField] GameObject[] _attackEffect;//0:斬撃
+    [SerializeField] GameObject[] _attackEffect;//0:斬撃 //1:サンダー
 
     void Update()
     {
         SelectCard();
         if (Input.GetKeyDown(KeyCode.A))
         {
-           AttackProcess(_enemy.transform, 10,0).Forget();
+           AttackProcess(_enemy.transform, 10,1).Forget();
             
             
         }
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("カードを選択");
             _selectedCard.Add(hitObject);
 
-            CardManager cardmanager = hitObject.GetComponent<CardManager>();
+            Card cardmanager = hitObject.GetComponent<Card>();
             if (cardmanager != null)
             {
                 cardmanager.ShowSprite();
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            CardManager cardmanager = hit.collider.gameObject.GetComponent<CardManager>();
+            Card cardmanager = hit.collider.gameObject.GetComponent<Card>();
             if(cardmanager == null) return null;
             cardmanager.TouchPocess();
             if (GameManager.Instance._isDebugMode)
@@ -95,14 +95,14 @@ public class PlayerController : MonoBehaviour
         //}
 
         if (_selectedCard.Count <= 1) return;
-        CardManager firstCardInfo = _selectedCard[0]. GetComponent<CardManager>();
+        Card firstCardInfo = _selectedCard[0]. GetComponent<Card>();
         int firstNum = firstCardInfo.GetCardNum();
 
         foreach (var card in _selectedCard)
         {
             if (card == _selectedCard[0]) continue;
-            CardManager cardInfo= card.GetComponent<CardManager>();
-            int num = cardInfo.GetComponent<CardManager>().GetCardNum();
+            Card cardInfo= card.GetComponent<Card>();
+            int num = cardInfo.GetComponent<Card>().GetCardNum();
             
             if (num != firstNum)
             {
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 同じカードが選択されたときの処理
     /// </summary>
-    async void SameCardProcess(CardManager card1, CardManager card2)
+    async void SameCardProcess(Card card1, Card card2)
     {
         await UniTask.Delay(1000);
         AttackProcess(_enemy.transform, 10, 0).Forget();
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="card1">カード1</param>
     /// <param name="card2">カード2</param>
-    async void DifferentCardProcess(CardManager card1, CardManager card2)
+    async void DifferentCardProcess(Card card1, Card card2)
     {
         await UniTask.Delay(1000);
         card1.ResetCard();
@@ -159,7 +159,8 @@ public class PlayerController : MonoBehaviour
 
         transform.DOMoveX(target.position.x-2f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
-            Instantiate(_attackEffect[atkEffectIndex], target.position+new Vector3(0,1,0), Quaternion.identity);
+            GameObject EF= Instantiate(_attackEffect[atkEffectIndex], target.position+new Vector3(0,1,0), Quaternion.identity);
+            Destroy(EF,2f);
 
             target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
         });

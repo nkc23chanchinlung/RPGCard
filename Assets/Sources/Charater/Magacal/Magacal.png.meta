@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: f337e8c5b8f19eb43aba5bea59cc6eb6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8754677571173129778
+    second: Magacal_0
+  - first:
+      213: 4325546701574764221
+    second: Magacal_1
+  - first:
+      213: -9000069076128893693
+    second: Magacal_2
+  - first:
+      213: -7251017855139082170
+    second: Magacal_3
+  - first:
+      213: -2953518018924519090
+    second: Magacal_4
+  - first:
+      213: 1195219343602685371
+    second: Magacal_5
+  - first:
+      213: 9062494959393603282
+    second: Magacal_6
+  - first:
+      213: -2667092834274415197
+    second: Magacal_7
+  - first:
+      213: -6207674339243564916
+    second: Magacal_8
+  - first:
+      213: -2097371001178857774
+    second: Magacal_9
+  - first:
+      213: -3465224980728071120
+    second: Magacal_10
+  - first:
+      213: -5792983987090145509
+    second: Magacal_11
+  - first:
+      213: 5301647597161932927
+    second: Magacal_12
+  - first:
+      213: -3060835222363561380
+    second: Magacal_13
+  - first:
+      213: 4105132442789295556
+    second: Magacal_14
+  - first:
+      213: -7376352741645090640
+    second: Magacal_15
+  - first:
+      213: -4154478260057426501
+    second: Magacal_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Magacal_0
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 698
+        width: 144
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23e9ad0eddcde7970800000000000000
+      internalID: 8754677571173129778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_1
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 698
+        width: 144
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db6f9beaecd670c30800000000000000
+      internalID: 4325546701574764221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_2
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 698
+        width: 152
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 305fb531cd4591380800000000000000
+      internalID: -9000069076128893693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_3
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 697
+        width: 140
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6409b64ada53f5b90800000000000000
+      internalID: -7251017855139082170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_4
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 698
+        width: 144
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e41e94c920ff207d0800000000000000
+      internalID: -2953518018924519090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_5
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 697
+        width: 143
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb51d1419a5469010800000000000000
+      internalID: 1195219343602685371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_6
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 383
+        width: 264
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2de7c61862374cd70800000000000000
+      internalID: 9062494959393603282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_7
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 389
+        width: 188
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ad6516b2359cfad0800000000000000
+      internalID: -2667092834274415197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_8
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 390
+        width: 199
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8064100419e9d9a0800000000000000
+      internalID: -6207674339243564916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_9
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 389
+        width: 257
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2de5780df24a4e2e0800000000000000
+      internalID: -2097371001178857774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_10
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 383
+        width: 277
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03cb4e45d3c09efc0800000000000000
+      internalID: -3465224980728071120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_11
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 74
+        width: 183
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1f37fb91cf2b9fa0800000000000000
+      internalID: -5792983987090145509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_12
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 81
+        width: 191
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f78e329766c339940800000000000000
+      internalID: 5301647597161932927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_13
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 78
+        width: 168
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c52240f059ab585d0800000000000000
+      internalID: -3060835222363561380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_14
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 78
+        width: 197
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c53360f43c58f830800000000000000
+      internalID: 4105132442789295556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_15
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 78
+        width: 208
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b00448534ee1a990800000000000000
+      internalID: -7376352741645090640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magacal_16
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 77
+        width: 148
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb5b13aa8045856c0800000000000000
+      internalID: -4154478260057426501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Magacal_0: 8754677571173129778
+      Magacal_1: 4325546701574764221
+      Magacal_10: -3465224980728071120
+      Magacal_11: -5792983987090145509
+      Magacal_12: 5301647597161932927
+      Magacal_13: -3060835222363561380
+      Magacal_14: 4105132442789295556
+      Magacal_15: -7376352741645090640
+      Magacal_16: -4154478260057426501
+      Magacal_2: -9000069076128893693
+      Magacal_3: -7251017855139082170
+      Magacal_4: -2953518018924519090
+      Magacal_5: 1195219343602685371
+      Magacal_6: 9062494959393603282
+      Magacal_7: -2667092834274415197
+      Magacal_8: -6207674339243564916
+      Magacal_9: -2097371001178857774
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// カードの情報を管理するクラス
 /// </summary>
-public class CardManager : MonoBehaviour
+public class Card : MonoBehaviour
 { 
     GameObject Outline;
     private void Awake()
