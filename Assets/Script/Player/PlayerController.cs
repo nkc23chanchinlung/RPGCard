@@ -42,10 +42,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("カードを選択");
             _selectedCard.Add(hitObject);
 
-            Card cardmanager = hitObject.GetComponent<Card>();
-            if (cardmanager != null)
+            Card card = hitObject.GetComponent<Card>();
+            if (card != null)
             {
-                cardmanager.ShowSprite();
+                card.ShowSprite();
+                card.IsChoose = true;
             }
         }
 
@@ -69,12 +70,12 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            Card cardmanager = hit.collider.gameObject.GetComponent<Card>();
-            if(cardmanager == null) return null;
-            cardmanager.TouchPocess();
+            Card card = hit.collider.gameObject.GetComponent<Card>();
+            if(card == null) return null;
+            card.TouchPocess();
             if (GameManager.Instance._isDebugMode)
             {
-                Debug.Log("カードの番号は" + cardmanager.GetCardNum());
+                Debug.Log("カードの番号は" + card.GetCardNum());
 
             }
             return hit.collider.gameObject;
