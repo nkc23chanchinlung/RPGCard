@@ -1,6 +1,8 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-
+/// <summary>
+/// 敵の基底クラス
+/// </summary>
 public class EnemyBase : MonoBehaviour
 {
     [Header("Status")]
@@ -16,17 +18,10 @@ public class EnemyBase : MonoBehaviour
     {
         
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// ダメージ受ける関数
+    /// </summary>
+    /// <param name="Dmg">受けるダメージ量</param>
     public void TakeDamage(int Dmg)
     {
         Hp -= Dmg;

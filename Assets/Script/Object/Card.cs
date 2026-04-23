@@ -5,14 +5,16 @@ using UnityEngine;
 /// カードの情報を管理するクラス
 /// </summary>
 public class Card : MonoBehaviour
-{ 
-    GameObject Outline;
+{
+   [SerializeField] int _cardNum; //カードの番号
+    GameObject _outLine;
     Animator _animator;
+   
     public bool IsChoose { get; set; } = false;
     private void Awake()
     {
         
-        Outline = transform.Find("Choose").gameObject;
+        _outLine = transform.Find("Choose").gameObject;
         GameObject img = transform.Find("Img").gameObject;
         _animator= GetComponent<Animator>();
         if (GameManager.Instance._isDebugMode) img.SetActive(true);
@@ -20,7 +22,7 @@ public class Card : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Outline.SetActive(false);
+        _outLine.SetActive(false);
     }
     //カードの効果連想配列
     public Dictionary<string, int> cardDic = new Dictionary<string, int>()
@@ -29,9 +31,6 @@ public class Card : MonoBehaviour
         {"FireBall",2},
         {"heal",18}
     };
-
-    [SerializeField]int _cardNum; //カードの番号
-
     //カードの番号を設定する
     public void SetCardNum(string cardName)
     {
@@ -59,10 +58,10 @@ public class Card : MonoBehaviour
     {
         if (IsChoose)
         {
-            Outline.SetActive(false);
+            _outLine.SetActive(false);
         }
         else
-        Outline.SetActive(true);
+        _outLine.SetActive(true);
     }
     public void ResetCard()
     {

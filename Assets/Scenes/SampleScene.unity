@@ -920,7 +920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   MaxHP: 50
   Hp: 50
-  Attack: 10
+  Attack: 20
   Speed: 0
   Defense: 0
   Level: 0
@@ -4228,7 +4228,7 @@ GameObject:
   - component: {fileID: 1991127606}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4383,6 +4383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce919a014d14a344acc28a44ca5ae0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  MaxHP: 100
   _selectedCard: []
   _cardLimit: 1
   battleManager: {fileID: 357065899}

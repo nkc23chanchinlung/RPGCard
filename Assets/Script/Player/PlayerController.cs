@@ -5,7 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
-   [SerializeField] List<GameObject> _selectedCard = new List<GameObject>(); //選択されたカードのリスト
+    [Header("Status")]
+   
+    [SerializeField]float MaxHP = 100f;
+    public float Hp { get; set; }
+
+
+    [SerializeField] List<GameObject> _selectedCard = new List<GameObject>(); //選択されたカードのリスト
     [SerializeField] int _cardLimit; //選択できるカードの上限
     DataManager dataManager;
     [SerializeField]BattleManager battleManager;
@@ -161,7 +167,7 @@ public class PlayerController : MonoBehaviour
         transform.DOMoveX(target.position.x-2f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
             GameObject EF= Instantiate(_attackEffect[atkEffectIndex], target.position+new Vector3(0,1,0), Quaternion.identity);
-            Destroy(EF,2f);
+            Destroy(EF,1f);
 
             target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
         });
@@ -171,6 +177,15 @@ public class PlayerController : MonoBehaviour
 
         transform.DOMoveX(origin, 0.5f).SetEase(Ease.OutQuad);
         await UniTask.Yield();
+    }
+    public async UniTask TakeDamage(int damage)
+    {
+        Debug.Log("プレイヤーは" + damage + "のダメージを受けた");
+        Hp-= damage;
+        UiManager.Instance.CreateDmg_Text(transform, damage).Forget();
+        await UniTask.Yield();
+       // return damage;
+       
     }
 
 }

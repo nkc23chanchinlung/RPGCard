@@ -2,12 +2,6 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-
-//20日ここまで
-
-
-
-
 public class UiManager : MonoBehaviour
 {
     [SerializeField] Text _debug_Text;
@@ -61,6 +55,7 @@ public class UiManager : MonoBehaviour
         float uiPosZ = 10f;//UIのZ座標を指定
         Vector3 screenPos = Camera.main.WorldToScreenPoint( targer.transform.position + new Vector3(0, 1, uiPosZ));
        Text _dmg_Text= Instantiate(_dmg_Text_Prefab, _gameCanvas.transform).GetComponent<Text>();
+        _dmg_Text.transform.position = screenPos;    
         _dmg_Text.text = dmg.ToString();
         _dmg_Text.transform.DOMove(
             screenPos + new Vector3(0f, 100f, 0f),
