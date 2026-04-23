@@ -21,22 +21,10 @@ public class Slime : EnemyBase
         AttackProcess(GameObject.FindGameObjectWithTag("Player").transform, Attack).Forget();
         
     }
-
-    public async UniTask AttackProcess(Transform target, int atk)
-    {
-        float origin = 6f; //原点
-
-        transform.DOMoveX(target.position.x +2f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
-        {
-
-
-            target.gameObject.GetComponent<PlayerController>().TakeDamage(atk).Forget();
-        });
-
-
-        await UniTask.Delay(TimeSpan.FromSeconds(1));
-
-        transform.DOMoveX(origin, 0.5f).SetEase(Ease.OutQuad);
-        await UniTask.Yield();
-    }
+    /// <summary>
+    /// 攻撃処理関数
+    /// </summary>
+    /// <param name="target">対象</param>
+    /// <param name="atk">攻撃力</param>
+    /// <returns></returns>
 }

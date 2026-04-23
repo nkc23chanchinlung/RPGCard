@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     bool _isGameOver = false; //ゲームオーバーかどうか
     int _round = 0; //現在のラウンド数
 
+    
+
    public static GameManager Instance; //シングルトンインスタンス
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

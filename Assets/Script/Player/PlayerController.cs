@@ -3,29 +3,32 @@ using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// プレイヤー操作処理クラス
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
-    [Header("Status")]
-   
-    [SerializeField]float MaxHP = 100f;
-    public float Hp { get; set; }
-
-
     [SerializeField] List<GameObject> _selectedCard = new List<GameObject>(); //選択されたカードのリスト
     [SerializeField] int _cardLimit; //選択できるカードの上限
     DataManager dataManager;
     [SerializeField]BattleManager battleManager;
     [SerializeField] GameObject _enemy;
     [SerializeField] GameObject[] _attackEffect;//0:斬撃 //1:サンダー
+    [SerializeField] int Max_chanceLimit;
+    int _chanceLimit;
 
+    private void Awake()
+    {
+        _chanceLimit = Max_chanceLimit;
+        _enemy = GameObject.FindWithTag("Enemy");
+    }
     void Update()
     {
         SelectCard();
         if (Input.GetKeyDown(KeyCode.A))
         {
            AttackProcess(_enemy.transform, 10,1).Forget();
-            
-            
         }
 
     }
@@ -37,7 +40,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// カードを選択する関数
     /// </summary>
-    void SelectCard()
+   public void SelectCard()
     {
         GameObject hitObject = MouseCollider();
 
@@ -113,7 +116,7 @@ public class PlayerController : MonoBehaviour
             
             if (num != firstNum)
             {
-                DifferentCardProcess(firstCardInfo, cardInfo);
+                DifferentCardProcess(firstCardInfo, cardInfo).Forget();
                 _selectedCard.Clear();
                 
             }
@@ -141,15 +144,30 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="card1">カード1</param>
     /// <param name="card2">カード2</param>
-    async void DifferentCardProcess(Card card1, Card card2)
+    async UniTask DifferentCardProcess(Card card1, Card card2)
     {
         await UniTask.Delay(1000);
         card1.ResetCard();
         card2.ResetCard();
 
+        //チャンス回数を減らす処理
+        _chanceLimit--;
+        UiManager.Instance.EditChanceText(_chanceLimit).Forget();
+
+        if(_chanceLimit <= 0)
+        {
+           EnemyBase enemy=GameObject.FindWithTag("Enemy").GetComponent<EnemyBase>();
+            await enemy.AttackProcess(transform, enemy.Attack);
+
+            _chanceLimit= Max_chanceLimit;
+            UiManager.Instance.EditChanceText(_chanceLimit).Forget();
+
+        }
+
+
 
     }
-    public int  GetSameCardNum(int num)
+    public int GetSameCardNum(int num)
     {
         return num;
     }
@@ -177,15 +195,6 @@ public class PlayerController : MonoBehaviour
 
         transform.DOMoveX(origin, 0.5f).SetEase(Ease.OutQuad);
         await UniTask.Yield();
-    }
-    public async UniTask TakeDamage(int damage)
-    {
-        Debug.Log("プレイヤーは" + damage + "のダメージを受けた");
-        Hp-= damage;
-        UiManager.Instance.CreateDmg_Text(transform, damage).Forget();
-        await UniTask.Yield();
-       // return damage;
-       
     }
 
 }

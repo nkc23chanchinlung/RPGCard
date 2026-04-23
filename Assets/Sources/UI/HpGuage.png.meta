@@ -1,0 +1,449 @@
+fileFormatVersion: 2
+guid: eaedf592bd8811f429b6f406d20c2e39
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7850938103732076182
+    second: HpGuage_0
+  - first:
+      213: 3187085862352279481
+    second: HpGuage_1
+  - first:
+      213: 1955831715713476442
+    second: HpGuage_2
+  - first:
+      213: 658315145481661735
+    second: HpGuage_3
+  - first:
+      213: -1842998555146288307
+    second: HpGuage_4
+  - first:
+      213: -7463333342065641635
+    second: HpGuage_5
+  - first:
+      213: -3331702946393660886
+    second: HpGuage_6
+  - first:
+      213: -409522467751032971
+    second: HpGuage_7
+  - first:
+      213: 1001484971706796286
+    second: HpGuage_8
+  - first:
+      213: -7600103329828308792
+    second: HpGuage_9
+  - first:
+      213: 8607851860236006989
+    second: HpGuage_10
+  - first:
+      213: 112321964134185933
+    second: HpGuage_11
+  - first:
+      213: 7339898663679861638
+    second: HpGuage_12
+  - first:
+      213: 4037841219033900038
+    second: HpGuage_13
+  - first:
+      213: -2939356868987663081
+    second: HpGuage_14
+  - first:
+      213: 120558204068468646
+    second: HpGuage_15
+  - first:
+      213: -8967433585972737946
+    second: HpGuage_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HpGuage_5
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 787
+        width: 114
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5739d92ed9ec6890800000000000000
+      internalID: -7463333342065641635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_6
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 733
+        width: 235
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a22651782d963c1d0800000000000000
+      internalID: -3331702946393660886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_7
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 675
+        width: 388
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 577882e3c75115af0800000000000000
+      internalID: -409522467751032971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_8
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 616
+        width: 635
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef8c972964df5ed00800000000000000
+      internalID: 1001484971706796286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_9
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 557
+        width: 864
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c8f151e942078690800000000000000
+      internalID: -7600103329828308792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_10
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 498
+        width: 1705
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d467d8819ab357770800000000000000
+      internalID: 8607851860236006989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_11
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 357
+        width: 302
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcb31b43b3c0f8100800000000000000
+      internalID: 112321964134185933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 300
+        width: 421
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 683a00832fe8cd560800000000000000
+      internalID: 7339898663679861638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 243
+        width: 596
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60422fff13b490830800000000000000
+      internalID: 4037841219033900038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_14
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 186
+        width: 788
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71dc2e3408e4537d0800000000000000
+      internalID: -2939356868987663081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_15
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 129
+        width: 1015
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a792404c0f4ca100800000000000000
+      internalID: 120558204068468646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpGuage_16
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 71
+        width: 1735
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66800314aa64d8380800000000000000
+      internalID: -8967433585972737946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1511cde960b8b6a46b78c0154520f1dc
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      HpGuage_0: -7850938103732076182
+      HpGuage_1: 3187085862352279481
+      HpGuage_10: 8607851860236006989
+      HpGuage_11: 112321964134185933
+      HpGuage_12: 7339898663679861638
+      HpGuage_13: 4037841219033900038
+      HpGuage_14: -2939356868987663081
+      HpGuage_15: 120558204068468646
+      HpGuage_16: -8967433585972737946
+      HpGuage_2: 1955831715713476442
+      HpGuage_3: 658315145481661735
+      HpGuage_4: -1842998555146288307
+      HpGuage_5: -7463333342065641635
+      HpGuage_6: -3331702946393660886
+      HpGuage_7: -409522467751032971
+      HpGuage_8: 1001484971706796286
+      HpGuage_9: -7600103329828308792
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

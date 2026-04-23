@@ -8,6 +8,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject _dmg_Text_Prefab;
     [SerializeField] Transform _dmg_Text_Parent;
     [SerializeField] GameObject _gameCanvas;
+    [SerializeField] Text _chance_Text;
 
     public static UiManager Instance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,18 +34,7 @@ public class UiManager : MonoBehaviour
             CreateDmg_Text(_dmg_Text_Parent, 100).Forget();
         }
     }
-    void CheckUIManagerExist()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(Instance);
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
+    
     /// <summary>
     /// ダメージ値のテキストを生成する
     /// </summary>
@@ -67,5 +57,27 @@ public class UiManager : MonoBehaviour
 
         await UniTask.Yield();
 
+    }
+    async public UniTask EditChanceText(int times)
+    {
+        _chance_Text.gameObject.transform.localScale = new Vector3(16, 16, 16);
+        _chance_Text.gameObject.transform.DOScale(8, 0.5f).SetEase(Ease.OutBounce);
+        if(times==1)_chance_Text.color = Color.red;
+        else _chance_Text.color = Color.white;
+        _chance_Text.text ="チャンス:"+ times.ToString();
+    }
+
+
+    void CheckUIManagerExist()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 }

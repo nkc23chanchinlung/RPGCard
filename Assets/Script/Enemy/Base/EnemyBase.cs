@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using System;
 using UnityEngine;
 /// <summary>
 /// 敵の基底クラス
@@ -48,10 +50,27 @@ public class EnemyBase : MonoBehaviour
         while(elapsedTime< duration)
         {
             elapsedTime += Time.deltaTime;
-            Camera.main.transform.position = startPos + Random.insideUnitSphere * strength;
+            Camera.main.transform.position = startPos + UnityEngine. Random.insideUnitSphere * strength;
             await UniTask.Yield();
         }
         Camera.main.transform.position = startPos;
+    }
+
+
+    public async UniTask AttackProcess(Transform target, int atk)
+    {
+        float origin = 6f; //原点
+
+        transform.DOMoveX(target.position.x + 2f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            target.gameObject.GetComponent<PlayerBase>().TakeDamage(atk).Forget();
+        });
+
+
+        await UniTask.Delay(TimeSpan.FromSeconds(1));
+
+        transform.DOMoveX(origin, 0.5f).SetEase(Ease.OutQuad);
+        await UniTask.Yield();
     }
 
 
