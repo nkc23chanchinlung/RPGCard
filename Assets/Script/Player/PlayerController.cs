@@ -48,10 +48,12 @@ public class PlayerController : MonoBehaviour
 
         if (hitObject.CompareTag("Card") && Input.GetMouseButtonDown(0))
         {
+            Card card = hitObject.GetComponent<Card>();
+            if(card.IsChoose) return;
             Debug.Log("カードを選択");
             _selectedCard.Add(hitObject);
 
-            Card card = hitObject.GetComponent<Card>();
+           
             if (card != null)
             {
                 card.ShowSprite();
@@ -98,11 +100,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="cardLimit">選択できるカードの上限</param>
     void ListManagement(int cardLimit)
     {
-        //if (_selectedCard.Count > cardLimit)
-        //{
-        //    _selectedCard.Clear();
-        //    return;
-        //}
+     
 
         if (_selectedCard.Count <= 1) return;
         Card firstCardInfo = _selectedCard[0]. GetComponent<Card>();

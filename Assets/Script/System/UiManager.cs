@@ -1,14 +1,15 @@
 using Cysharp.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     [SerializeField] Text _debug_Text;
     [SerializeField] GameObject _dmg_Text_Prefab;
-    [SerializeField] Transform _dmg_Text_Parent;
     [SerializeField] GameObject _gameCanvas;
     [SerializeField] Text _chance_Text;
+    [SerializeField] GameObject bag;
 
     public static UiManager Instance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,6 +21,8 @@ public class UiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ColliderMouseOver(bag);
+
         if (GameManager.Instance._isDebugMode)
         {
             _debug_Text.gameObject.SetActive(true);
@@ -29,10 +32,7 @@ public class UiManager : MonoBehaviour
             _debug_Text.gameObject.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            CreateDmg_Text(_dmg_Text_Parent, 100).Forget();
-        }
+       
     }
     
     /// <summary>
@@ -80,4 +80,27 @@ public class UiManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    void ColliderMouseOver(GameObject obj) /*******いま書いてる********/
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            GameObject hitobj= EventSystem.current.IsPointerOverGameObject() ? this.gameObject : null;
+
+       
+            Debug.Log(hitobj.name);
+        }
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        //// Raycastを作成
+        //RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
+        //Debug.Log(hit2d.transform.gameObject);
+
+        //if (hit2d.transform.gameObject== obj)
+        //{
+        //    Debug.Log(obj);
+        //}
+    }
+        
+           
+    
 }

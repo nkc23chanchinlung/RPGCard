@@ -9,8 +9,9 @@ public class Card : MonoBehaviour
    [SerializeField] int _cardNum; //カードの番号
     GameObject _outLine;
     Animator _animator;
-   
-    public bool IsChoose { get; set; } = false;
+    public bool IsChoose { get; set; } //カードが選択されているかどうか
+
+    
     private void Awake()
     {
         
@@ -65,6 +66,8 @@ public class Card : MonoBehaviour
     }
     public void ResetCard()
     {
+        Card card= GetComponent<Card>();
+        card.IsChoose = false;
         Debug.Log("カードのリセット");
         GameObject img = transform.Find("Img").gameObject;
         _animator.SetBool("isShow", false);
