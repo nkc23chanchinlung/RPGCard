@@ -10,7 +10,6 @@ public class DataManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        Debug.Log("DataManager‚ªŒÄ‚Ño‚µ‚½");
     }
     
 

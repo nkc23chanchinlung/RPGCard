@@ -9,19 +9,32 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject _dmg_Text_Prefab;
     [SerializeField] GameObject _gameCanvas;
     [SerializeField] Text _chance_Text;
-    [SerializeField] GameObject bag;
+    
+    [SerializeField] GameObject _bag;
+    Animator _bag_Anim;
+
+    bool _isTouchingBag = false;
 
     public static UiManager Instance;
+    void Awake()
+    {
+        CheckUIManagerExist();
+        _bag_Anim = _bag.GetComponent<Animator>();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        CheckUIManagerExist();
+       // CheckUIManagerExist();
     }
-
+    private void FixedUpdate()
+    {
+        _isTouchingBag = UITouchCollider(_bag, 1f);
+        _bag_Anim.SetBool("IsTouching", _isTouchingBag);
+    }
     // Update is called once per frame
     void Update()
     {
-        ColliderMouseOver(bag);
+       
 
         if (GameManager.Instance._isDebugMode)
         {
@@ -80,27 +93,39 @@ public class UiManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void ColliderMouseOver(GameObject obj) /*******いま書いてる********/
+    /// <summary>
+    /// Uiに当たり判定をつける関数
+    /// </summary>
+    /// <param name="obj">対象のUIオブジェクト</param>
+    /// <param name="scale">当たり判定のスケール</param>
+    public bool UITouchCollider(GameObject obj, float scale)
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        Vector3 worldPosObj=Camera.main.ScreenToWorldPoint(obj.transform.position);
+        float sizeX = Mathf.Abs(obj.transform.localScale.x) / 2;
+        float sizeY = Mathf.Abs(obj.transform.localScale.y) / 2;
+
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        worldPos.z = 0;
+        float x1 = worldPosObj.x - sizeX * scale;
+        float x2 = worldPosObj.x + sizeX * scale;
+        float y1 = worldPosObj.y - sizeY * scale;
+        float y2 = worldPosObj.y + sizeY * scale;
+        Debug.DrawLine(new Vector3(x1, y2, 0), new Vector3(x2, y2, 0), Color.red);
+        Debug.DrawLine(new Vector3(x1, y1, 0), new Vector3(x2, y1, 0), Color.red);
+        Debug.DrawLine(new Vector3(x1, y1, 0), new Vector3(x1, y2, 0), Color.red);
+        Debug.DrawLine(new Vector3(x2, y1, 0), new Vector3(x2, y2, 0), Color.red);
+     
+        if (worldPos.x > x1 && worldPos.x < x2 && worldPos.y > y1 && worldPos.y < y2)
         {
-            GameObject hitobj= EventSystem.current.IsPointerOverGameObject() ? this.gameObject : null;
-
-       
-            Debug.Log(hitobj.name);
+            return true;
         }
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        else         {
+            return false;
+        }
 
-        //// Raycastを作成
-        //RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
-        //Debug.Log(hit2d.transform.gameObject);
 
-        //if (hit2d.transform.gameObject== obj)
-        //{
-        //    Debug.Log(obj);
-        //}
     }
-        
-           
-    
+
+
+
 }

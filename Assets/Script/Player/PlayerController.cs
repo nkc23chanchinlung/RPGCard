@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int Max_chanceLimit;
     int _chanceLimit;
 
+    
+
     private void Awake()
     {
         _chanceLimit = Max_chanceLimit;
@@ -35,6 +37,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         ListManagement(_cardLimit);
+       
+       
     }
 
     /// <summary>
@@ -196,5 +200,6 @@ public class PlayerController : MonoBehaviour
         transform.DOMoveX(origin, 0.5f).SetEase(Ease.OutQuad);
         await UniTask.Yield();
     }
+    
 
 }
