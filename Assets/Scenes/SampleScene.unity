@@ -3128,7 +3128,7 @@ MonoBehaviour:
   _dmg_Text_Prefab: {fileID: 2253940750587774156, guid: b450c613be0a181419ff8e20fe0d2393, type: 3}
   _gameCanvas: {fileID: 1173802846}
   _chance_Text: {fileID: 1526402452}
-  bag: {fileID: 1764353378}
+  _bag: {fileID: 1764353378}
 --- !u!1 &1580710541
 GameObject:
   m_ObjectHideFlags: 0
