@@ -59,7 +59,7 @@ public class EnemyBase : MonoBehaviour
 
     public async UniTask AttackProcess(Transform target, int atk)
     {
-        float origin = 6f; //原点
+        float origin = transform.position.x; //原点
 
         transform.DOMoveX(target.position.x + 2f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
@@ -68,8 +68,7 @@ public class EnemyBase : MonoBehaviour
 
 
         await UniTask.Delay(TimeSpan.FromSeconds(1));
-
-        transform.DOMoveX(origin, 0.5f).SetEase(Ease.OutQuad);
+        transform.DOMoveX(origin, 0.5f).SetEase(Ease.OutQuad);//元の位置に戻る
         await UniTask.Yield();
     }
 

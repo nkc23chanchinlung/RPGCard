@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class CardManager : MonoBehaviour
 {
     [SerializeField] GameObject _cardPre; //カードのプレハブ
-    
+    static public CardManager Instance;
     int _cardNum = 0; //カードの枚数
     [SerializeField]int _instanceX, _instanceY; //カードの生成位置
     [SerializeField]Sprite[] _cardSprite; //カードのスプライト
@@ -19,24 +19,30 @@ public class CardManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        Instance = this;
     }
     void Start()
     {
         _dataManager = DataManager.Instance;
-        InstanceCard(2.0f,-4);
-        
+        InstanceCard(2.0f, -4).Forget() ;
+
+
 
     }
     private void FixedUpdate()
     {
-       _dataManager._sameCardValue = _sameCardValue; 
+       _dataManager._sameCardValue = _sameCardValue;
+        
+
     }
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Noduplicatesultiple().Forget();
+        }
     }
-    void InstanceCard(float distance,int initvalue)
+    async  UniTask InstanceCard(float distance,int initvalue)
     {
         GameObject instobj;
         
@@ -44,6 +50,7 @@ public class CardManager : MonoBehaviour
         {
             for (int j = 0; j < _instanceX; j++)
             {
+                
                 instobj = 
                     Instantiate(_cardPre,
                     new Vector3(5,0,0), 
@@ -68,7 +75,7 @@ public class CardManager : MonoBehaviour
                 {
                     Debug.Log("攻撃");
                 }
-
+                await UniTask.Delay(100); //カード生成の間隔を調整
             }
         }
         CheckCard();
@@ -84,8 +91,12 @@ public class CardManager : MonoBehaviour
         float duration = 0.5f; // 移動にかかる時間
         Vector3 startPosition = target.transform.position;
         
-        target.transform.DOMove(position, duration).SetEase(Ease.OutQuad);
-           
+        target.transform.DOMove(position, duration)
+            .SetEase(Ease.OutQuad)
+            .AsyncWaitForCompletion()
+            .AsUniTask().Forget();
+            
+          
         await UniTask.Yield();
     }
 
@@ -115,8 +126,33 @@ public class CardManager : MonoBehaviour
         }
     }
     //重複カードないとき回収する
-    void Noduplicatesultiple()
+    async UniTask Noduplicatesultiple()
     {
-        MoveCardAsync(gameObject, new Vector3(0, 0, 0)).Forget();
+        
+        foreach (var c in _instantCardInfoList)
+        {
+            // await MoveCardAsync(card, new Vector3(0, 0, 0));
+            await UniTask.WhenAll(MoveCardAsync(c.gameObject, new Vector3(5, 0, 0)));
+            await UniTask.Delay(150);
+            Destroy(c.gameObject,0.5f);
+        }
+        _instantCardInfoList.Clear();
+        await UniTask.Delay(500);
+
+
+        InstanceCard(2.0f, -4).Forget();
+
+
+    }
+    public async UniTask CheakinstantCardInfoList()
+    {
+            foreach (var c in _instantCardInfoList)
+            {
+            if (c == null)
+            {
+                _instantCardInfoList.Remove(c);
+            }
+            }
+            await UniTask.Yield();
     }
 }

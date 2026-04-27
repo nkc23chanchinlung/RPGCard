@@ -135,6 +135,8 @@ public class PlayerController : MonoBehaviour
         AttackProcess(_enemy.transform, 10, 0).Forget();
         Destroy(card1.gameObject);
         Destroy(card2.gameObject);
+        CardManager.Instance.CheakinstantCardInfoList().Forget();
+        
 
     }
     /// <summary>
