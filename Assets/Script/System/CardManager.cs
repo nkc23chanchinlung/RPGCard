@@ -7,8 +7,10 @@ using System.Collections.Generic;
 
 public class CardManager : MonoBehaviour
 {
-    [SerializeField] GameObject _cardPre; //カードのプレハブ
     static public CardManager Instance;
+
+
+    [SerializeField] GameObject _cardPre; //カードのプレハブ
     int _cardNum = 0; //カードの枚数
     [SerializeField]int _instanceX, _instanceY; //カードの生成位置
     [SerializeField]Sprite[] _cardSprite; //カードのスプライト
@@ -131,7 +133,7 @@ public class CardManager : MonoBehaviour
         
         foreach (var c in _instantCardInfoList)
         {
-            // await MoveCardAsync(card, new Vector3(0, 0, 0));
+            c.ResetCard();
             await UniTask.WhenAll(MoveCardAsync(c.gameObject, new Vector3(5, 0, 0)));
             await UniTask.Delay(150);
             Destroy(c.gameObject,0.5f);
@@ -144,15 +146,13 @@ public class CardManager : MonoBehaviour
 
 
     }
-    public async UniTask CheakinstantCardInfoList()
+    public async UniTask RemoveCardList(Card card1,Card card2)
     {
-            foreach (var c in _instantCardInfoList)
-            {
-            if (c == null)
-            {
-                _instantCardInfoList.Remove(c);
-            }
-            }
-            await UniTask.Yield();
+        if (card1!=null)
+        _instantCardInfoList.Remove(card1);
+        if (card2!=null)
+        _instantCardInfoList.Remove(card2);
+
+        await UniTask.Yield();
     }
 }

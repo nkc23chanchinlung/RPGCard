@@ -5,36 +5,53 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
+    public static UiManager Instance;
+
+
     [SerializeField] Text _debug_Text;
     [SerializeField] GameObject _dmg_Text_Prefab;
     [SerializeField] GameObject _gameCanvas;
     [SerializeField] Text _chance_Text;
-    
+    [SerializeField] GameObject _itemSlot;
+    [Header("Bag")]
     [SerializeField] GameObject _bag;
+    [SerializeField]
+    GameObject[] _itemsSlot;
     Animator _bag_Anim;
 
     bool _isTouchingBag = false;
 
-    public static UiManager Instance;
     void Awake()
     {
         CheckUIManagerExist();
         _bag_Anim = _bag.GetComponent<Animator>();
+        TouchColInstance();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
        // CheckUIManagerExist();
     }
-    private void FixedUpdate()
-    {
-        _isTouchingBag = UITouchCollider(_bag, 1f);
-        _bag_Anim.SetBool("IsTouching", _isTouchingBag);
-    }
+   
     // Update is called once per frame
     void Update()
     {
-       
+
+        _isTouchingBag = UITouchCollider(_bag, 1f);
+        _bag_Anim.SetBool("IsTouching", _isTouchingBag);
+        if (_isTouchingBag&&!_itemSlot.activeSelf)
+        {
+            _itemSlot.SetActive(true);
+            _itemSlot.transform.DOScaleY(2, 0.5f).SetEase(Ease.OutBounce);
+        }
+        else if(!_isTouchingBag&&_itemSlot.activeSelf&&Input.GetMouseButtonDown(0))
+        {
+            _itemSlot.transform.DOScaleY(0, 0.5f).SetEase(Ease.OutSine).OnComplete(() =>
+            {
+                _itemSlot.SetActive(false);
+            });
+        }
+
 
         if (GameManager.Instance._isDebugMode)
         {
@@ -110,11 +127,13 @@ public class UiManager : MonoBehaviour
         float x2 = worldPosObj.x + sizeX * scale;
         float y1 = worldPosObj.y - sizeY * scale;
         float y2 = worldPosObj.y + sizeY * scale;
+        /***************************Debug用の当たり判定表示***************************/
         Debug.DrawLine(new Vector3(x1, y2, 0), new Vector3(x2, y2, 0), Color.red);
         Debug.DrawLine(new Vector3(x1, y1, 0), new Vector3(x2, y1, 0), Color.red);
         Debug.DrawLine(new Vector3(x1, y1, 0), new Vector3(x1, y2, 0), Color.red);
         Debug.DrawLine(new Vector3(x2, y1, 0), new Vector3(x2, y2, 0), Color.red);
      
+        
         if (worldPos.x > x1 && worldPos.x < x2 && worldPos.y > y1 && worldPos.y < y2)
         {
             return true;
@@ -125,7 +144,22 @@ public class UiManager : MonoBehaviour
 
 
     }
+    /// <summary>
+    /// タッチ当たり判定初期化関数
+    /// </summary>
+    void TouchColInstance()
+    {
+        foreach(var i in _itemsSlot)
+        {
+          UITouchCollider(i, 1f);
+        }
+    }
 
+    public void Open_Bag()
+    {
+        _itemSlot.SetActive(true);
+        _itemSlot. transform.DOScaleY(2, 0.5f).SetEase(Ease.OutBounce);
+    }
 
 
 }

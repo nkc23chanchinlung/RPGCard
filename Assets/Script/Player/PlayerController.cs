@@ -9,7 +9,9 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] List<GameObject> _selectedCard = new List<GameObject>(); //選択されたカードのリスト
+    static public PlayerController Instance;
+
+    public List<GameObject> _selectedCard = new List<GameObject>(); //選択されたカードのリスト
     [SerializeField] int _cardLimit; //選択できるカードの上限
     DataManager dataManager;
     [SerializeField]BattleManager battleManager;
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         _chanceLimit = Max_chanceLimit;
         _enemy = GameObject.FindWithTag("Enemy");
     }
@@ -137,9 +140,9 @@ public class PlayerController : MonoBehaviour
     {
         await UniTask.Delay(1000);
         AttackProcess(_enemy.transform, 10, 0).Forget();
+        CardManager.Instance.RemoveCardList(card1, card2).Forget();
         Destroy(card1.gameObject);
         Destroy(card2.gameObject);
-        CardManager.Instance.CheakinstantCardInfoList().Forget();
         
 
     }

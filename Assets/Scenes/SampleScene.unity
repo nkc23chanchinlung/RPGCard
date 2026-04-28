@@ -3029,7 +3029,7 @@ RectTransform:
   m_GameObject: {fileID: 1535167103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.768935, y: 2.3068051, z: 0.768935}
+  m_LocalScale: {x: 0.768935, y: 0, z: 0.768935}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1291400102}
@@ -3128,7 +3128,12 @@ MonoBehaviour:
   _dmg_Text_Prefab: {fileID: 2253940750587774156, guid: b450c613be0a181419ff8e20fe0d2393, type: 3}
   _gameCanvas: {fileID: 1173802846}
   _chance_Text: {fileID: 1526402452}
+  _itemSlot: {fileID: 1535167103}
   _bag: {fileID: 1764353378}
+  _itemsSlot:
+  - {fileID: 1291400101}
+  - {fileID: 1649759922}
+  - {fileID: 1731150816}
 --- !u!1 &1580710541
 GameObject:
   m_ObjectHideFlags: 0
@@ -4043,7 +4048,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1764353380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1535894776}
+        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+        m_MethodName: Open_Bag
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &1764353383
 Animator:
   serializedVersion: 7

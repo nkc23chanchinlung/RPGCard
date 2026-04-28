@@ -71,6 +71,7 @@ public class Card : MonoBehaviour
         Debug.Log("カードのリセット");
         GameObject img = transform.Find("Img").gameObject;
         _animator.SetBool("isShow", false);
+        PlayerController.Instance._selectedCard.Remove(gameObject);
 
         img.SetActive(false);
     }
