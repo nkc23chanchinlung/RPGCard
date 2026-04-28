@@ -44,6 +44,12 @@ public class CardManager : MonoBehaviour
             Noduplicatesultiple().Forget();
         }
     }
+    /// <summary>
+    /// カードを生成する関数
+    /// </summary>
+    /// <param name="distance">カード間の距離</param>
+    /// <param name="initvalue">初期位置の値</param>
+    /// <returns></returns>
     async  UniTask InstanceCard(float distance,int initvalue)
     {
         GameObject instobj;

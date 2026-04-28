@@ -28,29 +28,13 @@ public class UiManager : MonoBehaviour
         TouchColInstance();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-       // CheckUIManagerExist();
-    }
+   
    
     // Update is called once per frame
     void Update()
     {
+        BagProess();
 
-        _isTouchingBag = UITouchCollider(_bag, 1f);
-        _bag_Anim.SetBool("IsTouching", _isTouchingBag);
-        if (_isTouchingBag&&!_itemSlot.activeSelf)
-        {
-            _itemSlot.SetActive(true);
-            _itemSlot.transform.DOScaleY(2, 0.5f).SetEase(Ease.OutBounce);
-        }
-        else if(!_isTouchingBag&&_itemSlot.activeSelf&&Input.GetMouseButtonDown(0))
-        {
-            _itemSlot.transform.DOScaleY(0, 0.5f).SetEase(Ease.OutSine).OnComplete(() =>
-            {
-                _itemSlot.SetActive(false);
-            });
-        }
 
 
         if (GameManager.Instance._isDebugMode)
@@ -110,6 +94,24 @@ public class UiManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    void BagProess()
+    {
+        _isTouchingBag = UITouchCollider(_bag, 1f);
+        if (!_itemSlot.activeSelf)
+        {
+            _bag_Anim.SetBool("IsTouching", _isTouchingBag);
+        }
+
+
+        if (!_isTouchingBag && _itemSlot.activeSelf && Input.GetMouseButtonDown(0))
+        {
+            _itemSlot.transform.DOScaleY(0, 0.5f).SetEase(Ease.OutSine).OnComplete(() =>
+            {
+                _itemSlot.SetActive(false);
+            });
+        }
+
+    }
     /// <summary>
     /// Uiに当たり判定をつける関数
     /// </summary>
@@ -158,7 +160,7 @@ public class UiManager : MonoBehaviour
     public void Open_Bag()
     {
         _itemSlot.SetActive(true);
-        _itemSlot. transform.DOScaleY(2, 0.5f).SetEase(Ease.OutBounce);
+        _itemSlot.transform.DOScaleY(2, 0.5f).SetEase(Ease.OutBounce);
     }
 
 

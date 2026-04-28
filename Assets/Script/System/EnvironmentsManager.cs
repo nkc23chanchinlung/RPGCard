@@ -6,27 +6,19 @@ public class EnvironmentsManager : MonoBehaviour
 {
     [SerializeField] GameObject[] _cloud;
     [SerializeField] GameObject[] _farawayCloud;
+    [SerializeField] GameObject _bird;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    //void Start()
-    //{
-    //    Moveenvir().Forget();
-    //}
+    void Start()
+    {
+        AsyncEnvironments().Forget();
+    }
 
     // Update is called once per frame
     void Update()
     {
         MoveEnvironments();
     }
-    //async UniTask Moveenvir()
-    //{
-    //    foreach (var cloud in _cloud)
-    //    {
-    //        cloud.transform.DOMoveX(-10f, 5f).SetLoops(-1, LoopType.Restart);
-    //    }
-    //    foreach (var _farawayCloud in _farawayCloud)
-    //    {
-    //        _farawayCloud.transform.DOMoveX(-10f, 5f).SetLoops(-1, LoopType.Restart);
-    //    }
+
     void MoveEnvironments()
     {
         for (int i = 0; i < _cloud.Length; i++)
@@ -45,7 +37,14 @@ public class EnvironmentsManager : MonoBehaviour
                 _farawayCloud[i].transform.position = new Vector3(19f, _farawayCloud[i].transform.position.y, _farawayCloud[i].transform.position.z);
             }
         }
-
-        //}
+    }
+    /// <summary>
+    /// 非同期処理環境オブジェクト処理関数
+    /// </summary>
+    /// <returns></returns>
+    async UniTask AsyncEnvironments()
+    {
+        _bird.transform.DOMoveX(20f, 10f).SetLoops(-1, LoopType.Restart);
+        await UniTask.Delay(1000);
     }
 }
