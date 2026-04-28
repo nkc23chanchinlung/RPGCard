@@ -14,7 +14,7 @@ public class CardManager : MonoBehaviour
     int _cardNum = 0; //カードの枚数
     [SerializeField]int _instanceX, _instanceY; //カードの生成位置
     [SerializeField]Sprite[] _cardSprite; //カードのスプライト
-    [SerializeField] List<Card> _instantCardInfoList; //カードの情報を管理するリスト
+    [SerializeField] List<Card> _instantCardList; //生成したカード管理するリスト
      int _sameCardValue = 0; //同じカードの値を管理する変数
     DataManager _dataManager;
 
@@ -67,7 +67,7 @@ public class CardManager : MonoBehaviour
                 var img = instobj.transform.Find("Img").GetComponent<SpriteRenderer>();
                 
                 Card cardInfo = instobj.GetComponent<Card>();
-                _instantCardInfoList.Add(cardInfo);
+                _instantCardList.Add(cardInfo);
                 cardInfo.SetCardNum(Random.Range(0, _cardSprite.Length));
 
                 //カードのスプライトを設定
@@ -107,13 +107,13 @@ public class CardManager : MonoBehaviour
     /// </summary>
     void CheckCard()
     {
-        for (int i = 0; i < _instantCardInfoList.Count; i++)
+        for (int i = 0; i < _instantCardList.Count; i++)
         {
-            int cardA = _instantCardInfoList[i].GetComponent<Card>().GetCardNum();
+            int cardA = _instantCardList[i].GetComponent<Card>().GetCardNum();
 
-            for (int j = i + 1; j < _instantCardInfoList.Count; j++)
+            for (int j = i + 1; j < _instantCardList.Count; j++)
             {
-                int cardB = _instantCardInfoList[j].GetComponent<Card>().GetCardNum();
+                int cardB = _instantCardList[j].GetComponent<Card>().GetCardNum();
 
                 if (cardA == cardB)
                 {
@@ -131,14 +131,14 @@ public class CardManager : MonoBehaviour
     async UniTask Noduplicatesultiple()
     {
         
-        foreach (var c in _instantCardInfoList)
+        foreach (var c in _instantCardList)
         {
             c.ResetCard();
             await UniTask.WhenAll(MoveCardAsync(c.gameObject, new Vector3(5, 0, 0)));
             await UniTask.Delay(150);
             Destroy(c.gameObject,0.5f);
         }
-        _instantCardInfoList.Clear();
+        _instantCardList.Clear();
         await UniTask.Delay(500);
 
 
@@ -149,9 +149,9 @@ public class CardManager : MonoBehaviour
     public async UniTask RemoveCardList(Card card1,Card card2)
     {
         if (card1!=null)
-        _instantCardInfoList.Remove(card1);
+        _instantCardList.Remove(card1);
         if (card2!=null)
-        _instantCardInfoList.Remove(card2);
+        _instantCardList.Remove(card2);
 
         await UniTask.Yield();
     }

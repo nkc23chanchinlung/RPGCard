@@ -68,7 +68,6 @@ public class Card : MonoBehaviour
     {
         Card card= GetComponent<Card>();
         card.IsChoose = false;
-        Debug.Log("カードのリセット");
         GameObject img = transform.Find("Img").gameObject;
         _animator.SetBool("isShow", false);
         PlayerController.Instance._selectedCard.Remove(gameObject);

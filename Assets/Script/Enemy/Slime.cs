@@ -21,10 +21,5 @@ public class Slime : EnemyBase
         AttackProcess(GameObject.FindGameObjectWithTag("Player").transform, Attack).Forget();
         
     }
-    /// <summary>
-    /// 攻撃処理関数
-    /// </summary>
-    /// <param name="target">対象</param>
-    /// <param name="atk">攻撃力</param>
-    /// <returns></returns>
+   
 }
