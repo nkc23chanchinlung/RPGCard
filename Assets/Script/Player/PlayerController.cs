@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour
         await UniTask.Delay(1000);
         int _cardNum = card1.GetCardNum();
         if(_cardNum==1) AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 1).Forget();
+        else if(_cardNum==2) AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 2).Forget();
         else AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 0).Forget();
 
         CardManager.Instance.RemoveCardList(card1, card2).Forget();
@@ -192,11 +193,12 @@ public class PlayerController : MonoBehaviour
     {
         float origin = -6f; //Œ´“_
         float MoveDuration = 0.5f; //ˆÚ“®ŠÔ
-
-        //UŒ‚ƒpƒ^[ƒ“0‚Í‹ß‹——£UŒ‚A1‚Í‰“‹——£UŒ‚‚Æ‚·‚é
+        PlayerBase playerBase = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+        //UŒ‚ƒpƒ^[ƒ“0‚Í‹ß‹——£UŒ‚A1‚Í‰“‹——£UŒ‚‚Æ‚·‚éA‚Q‚Í”ò‚Ñ“¹‹ïUŒ‚‚Æ‚·‚é
         if (AttackPatterns == 0)
         {
             {
+                playerBase.SetAttackTrue(playerBase.gameObject);
                 transform.DOMoveX(target.position.x - 2f, MoveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
                {
                    GameObject EF = Instantiate(_attackEffect[atkEffectIndex], target.position + new Vector3(0, 1, 0), Quaternion.identity);
@@ -207,7 +209,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (AttackPatterns == 1)
         {
-            PlayerBase playerBase = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+           
             playerBase.SetAttackTrue(playerBase.gameObject);
             GameObject EF = Instantiate(_attackEffect[atkEffectIndex], target.position + new Vector3(0, 1, 0), Quaternion.identity);
             Destroy(EF, 1f);
@@ -215,8 +217,18 @@ public class PlayerController : MonoBehaviour
 
             target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
         }
+        else if (AttackPatterns == 2)
+        {
+            playerBase.SetAttackTrue(playerBase.gameObject);
+            GameObject EF = Instantiate(_attackEffect[atkEffectIndex], transform.position + new Vector3(1, 0, 0), Quaternion.identity);
+            EF.transform.DOMove(target.position + new Vector3(0, 1, 0), MoveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
+            {
+                Destroy(EF);
+                target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
+            });
+        }
 
-        
+
         await UniTask.Delay(TimeSpan.FromSeconds(1));
 
         transform.DOMoveX(origin, MoveDuration).SetEase(Ease.OutQuad);
