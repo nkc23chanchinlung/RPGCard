@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: 4cf57db96dbdc0f4a9665bffe24afd20
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5302132836332813922
+    second: Fireball loop_0
+  - first:
+      213: -8230821561475955531
+    second: Fireball loop_1
+  - first:
+      213: 3539168195245113707
+    second: Fireball loop_2
+  - first:
+      213: -4833603190130068766
+    second: Fireball loop_3
+  - first:
+      213: -5918303284448297694
+    second: Fireball loop_4
+  - first:
+      213: -8473206758758488345
+    second: Fireball loop_5
+  - first:
+      213: -5177128501613028768
+    second: Fireball loop_6
+  - first:
+      213: -1985077472630688460
+    second: Fireball loop_7
+  - first:
+      213: -1717499493942957068
+    second: Fireball loop_8
+  - first:
+      213: -8980312188843789038
+    second: Fireball loop_9
+  - first:
+      213: 6595440169586311180
+    second: Fireball loop_10
+  - first:
+      213: 4020683988594798890
+    second: Fireball loop_11
+  - first:
+      213: -3852047587218428639
+    second: Fireball loop_12
+  - first:
+      213: -7899619032629925086
+    second: Fireball loop_13
+  - first:
+      213: -4807443234238351785
+    second: Fireball loop_14
+  - first:
+      213: -466479841828000542
+    second: Fireball loop_15
+  - first:
+      213: -8125880753596237474
+    second: Fireball loop_16
+  - first:
+      213: 6187591105744459953
+    second: Fireball loop_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fireball loop_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 388
+        width: 280
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91c27af64a0b66b0800000000000000
+      internalID: -5302132836332813922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fireball loop_4
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 379
+        width: 280
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22d7e61f486fddda0800000000000000
+      internalID: -5918303284448297694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fireball loop_7
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 384
+        width: 280
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 435b7385e869374e0800000000000000
+      internalID: -1985077472630688460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fireball loop_9
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 382
+        width: 280
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 215fadbd4a58f5380800000000000000
+      internalID: -8980312188843789038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fireball loop_10
+      rect:
+        serializedVersion: 2
+        x: 1382
+        y: 382
+        width: 280
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c00c88dd3e5b78b50800000000000000
+      internalID: 6595440169586311180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f4001e6e01aaea34e9024c49511da12b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Fireball loop_0: -5302132836332813922
+      Fireball loop_1: -8230821561475955531
+      Fireball loop_10: 6595440169586311180
+      Fireball loop_11: 4020683988594798890
+      Fireball loop_12: -3852047587218428639
+      Fireball loop_13: -7899619032629925086
+      Fireball loop_14: -4807443234238351785
+      Fireball loop_15: -466479841828000542
+      Fireball loop_16: -8125880753596237474
+      Fireball loop_17: 6187591105744459953
+      Fireball loop_2: 3539168195245113707
+      Fireball loop_3: -4833603190130068766
+      Fireball loop_4: -5918303284448297694
+      Fireball loop_5: -8473206758758488345
+      Fireball loop_6: -5177128501613028768
+      Fireball loop_7: -1985077472630688460
+      Fireball loop_8: -1717499493942957068
+      Fireball loop_9: -8980312188843789038
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

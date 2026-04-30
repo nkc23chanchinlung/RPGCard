@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 /// <summary>
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject[] _attackEffect;//0:éaåÇ //1:ÉTÉìÉ_Å[
     [SerializeField] int Max_chanceLimit;
     int _chanceLimit;
+    [SerializeField] ScreenEffect _screenEffect;
 
     
 
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
         SelectCard();
         if (Input.GetKeyDown(KeyCode.A))
         {
-           AttackProcess(_enemy.transform, 10,1).Forget();
+           AttackProcess(_enemy.transform, 10,1,1).Forget();
         }
 
     }
@@ -139,7 +141,10 @@ public class PlayerController : MonoBehaviour
     async void SameCardProcess(Card card1, Card card2)
     {
         await UniTask.Delay(1000);
-        AttackProcess(_enemy.transform, 10, 0).Forget();
+        int _cardNum = card1.GetCardNum();
+        if(_cardNum==1) AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 1).Forget();
+        else AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 0).Forget();
+
         CardManager.Instance.RemoveCardList(card1, card2).Forget();
         Destroy(card1.gameObject);
         Destroy(card2.gameObject);
@@ -170,14 +175,12 @@ public class PlayerController : MonoBehaviour
             UiManager.Instance.EditChanceText(_chanceLimit).Forget();
 
         }
-
-
-
     }
     public int GetSameCardNum(int num)
     {
         return num;
     }
+
     /// <summary>
     /// çUåÇèàóù
     /// </summary>
@@ -185,22 +188,38 @@ public class PlayerController : MonoBehaviour
     /// <param name="atk">çUåÇóÕ</param>
     /// <param name="atkEffectIndex">çUåÇÉGÉtÉFÉNÉgÇÃ
     /// <returns></returns>
-    public async UniTask AttackProcess(Transform target, int atk,int atkEffectIndex)
+    public async UniTask AttackProcess(Transform target, int atk,int atkEffectIndex,int AttackPatterns)
     {
         float origin = -6f; //å¥ì_
+        float MoveDuration = 0.5f; //à⁄ìÆéûä‘
 
-        transform.DOMoveX(target.position.x-2f, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
+        //çUåÇÉpÉ^Å[Éì0ÇÕãﬂãóó£çUåÇÅA1ÇÕâìãóó£çUåÇÇ∆Ç∑ÇÈ
+        if (AttackPatterns == 0)
         {
-            GameObject EF= Instantiate(_attackEffect[atkEffectIndex], target.position+new Vector3(0,1,0), Quaternion.identity);
-            Destroy(EF,1f);
+            {
+                transform.DOMoveX(target.position.x - 2f, MoveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
+               {
+                   GameObject EF = Instantiate(_attackEffect[atkEffectIndex], target.position + new Vector3(0, 1, 0), Quaternion.identity);
+                   Destroy(EF, 1f);
+                   target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
+               });
+            }
+        }
+        else if (AttackPatterns == 1)
+        {
+            PlayerBase playerBase = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+            playerBase.SetAttackTrue(playerBase.gameObject);
+            GameObject EF = Instantiate(_attackEffect[atkEffectIndex], target.position + new Vector3(0, 1, 0), Quaternion.identity);
+            Destroy(EF, 1f);
+           
 
             target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
-        });
+        }
 
         
         await UniTask.Delay(TimeSpan.FromSeconds(1));
 
-        transform.DOMoveX(origin, 0.5f).SetEase(Ease.OutQuad);
+        transform.DOMoveX(origin, MoveDuration).SetEase(Ease.OutQuad);
         await UniTask.Yield();
     }
     

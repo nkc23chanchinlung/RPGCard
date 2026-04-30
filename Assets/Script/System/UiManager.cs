@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -76,7 +77,7 @@ public class UiManager : MonoBehaviour
     {
         _chance_Text.gameObject.transform.localScale = new Vector3(16, 16, 16);
         _chance_Text.gameObject.transform.DOScale(8, 0.5f).SetEase(Ease.OutBounce);
-        if(times==1)_chance_Text.color = Color.red;
+        if(times<= 1) _chance_Text.color = Color.red;
         else _chance_Text.color = Color.white;
         _chance_Text.text ="チャンス:"+ times.ToString();
     }
@@ -125,6 +126,8 @@ public class UiManager : MonoBehaviour
 
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPos.z = 0;
+
+        // 当たり判定の範囲を計算
         float x1 = worldPosObj.x - sizeX * scale;
         float x2 = worldPosObj.x + sizeX * scale;
         float y1 = worldPosObj.y - sizeY * scale;
