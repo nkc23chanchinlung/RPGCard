@@ -12,6 +12,9 @@ public class PlayerBase : MonoBehaviour
     public int Attack;
     public float Hp { get; set; }
     Animator _animator;
+    [SerializeField] Sprite[] _cardList; //カードリスト
+    [SerializeField] GameObject[] _attackEffect;//0:斬撃 //1:サンダー
+
 
 
 
@@ -47,6 +50,7 @@ public class PlayerBase : MonoBehaviour
         }
         Camera.main.transform.position = startPos;
     }
+
     public void SetAttackTrue(GameObject obj)
     {
         //Animator _animator;
@@ -59,5 +63,17 @@ public class PlayerBase : MonoBehaviour
         _animator = this.gameObject.GetComponent<Animator>();
 
         _animator.SetBool("IsAttack", false);
+    }
+    /// <summary>
+    /// カードリストを取得する関数
+    /// </summary>
+    /// <returns></returns>
+    public Sprite[] GetCardList()
+    {
+        return _cardList;
+    }
+    public GameObject[] GetAttackEffect()
+    {
+        return _attackEffect;
     }
 }

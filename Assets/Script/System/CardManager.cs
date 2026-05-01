@@ -16,18 +16,21 @@ public class CardManager : MonoBehaviour
     [SerializeField]Sprite[] _cardSprite; //カードのスプライト
     [SerializeField] List<Card> _instantCardList; //生成したカード管理するリスト
      int _sameCardValue = 0; //同じカードの値を管理する変数
+    PlayerBase _player;
     DataManager _dataManager;
 
 
     private void Awake()
     {
         Instance = this;
+        _player=GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
     }
     void Start()
     {
         _dataManager = DataManager.Instance;
+        
         InstanceCard(2.0f, -4).Forget() ;
-
+        _cardSprite = _player.GetCardList();
 
 
     }

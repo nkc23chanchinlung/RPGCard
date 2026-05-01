@@ -14,13 +14,12 @@ public class PlayerController : MonoBehaviour
 
     public List<GameObject> _selectedCard = new List<GameObject>(); //選択されたカードのリスト
     [SerializeField] int _cardLimit; //選択できるカードの上限
-    DataManager dataManager;
-    [SerializeField]BattleManager battleManager;
     [SerializeField] GameObject _enemy;
-    [SerializeField] GameObject[] _attackEffect;//0:斬撃 //1:サンダー
+    GameObject[] _attackEffect;//0:斬撃 //1:サンダー
     [SerializeField] int Max_chanceLimit;
     int _chanceLimit;
     [SerializeField] ScreenEffect _screenEffect;
+    PlayerBase _player;
 
     
 
@@ -29,10 +28,17 @@ public class PlayerController : MonoBehaviour
         Instance = this;
         _chanceLimit = Max_chanceLimit;
         _enemy = GameObject.FindWithTag("Enemy");
+        _player=gameObject.GetComponent<PlayerBase>();
+    }
+    void Start()
+    {
+        _attackEffect = _player.GetAttackEffect();
     }
     void Update()
     {
         SelectCard();
+
+        //デバッグ用の攻撃処理
         if (Input.GetKeyDown(KeyCode.A))
         {
            AttackProcess(_enemy.transform, 10,1,1).Forget();
@@ -142,7 +148,9 @@ public class PlayerController : MonoBehaviour
     {
         await UniTask.Delay(1000);
         int _cardNum = card1.GetCardNum();
-        if(_cardNum==1) AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 1).Forget();
+
+        //職業の攻撃パターン　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<---独立させるべき
+        if (_cardNum==1) AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 1).Forget();
         else if(_cardNum==2) AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 2).Forget();
         else AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 0).Forget();
 
@@ -192,21 +200,27 @@ public class PlayerController : MonoBehaviour
     public async UniTask AttackProcess(Transform target, int atk,int atkEffectIndex,int AttackPatterns)
     {
         float origin = -6f; //原点
-        float MoveDuration = 0.5f; //移動時間
+        float moveDuration = 0.5f; //移動時間
         PlayerBase playerBase = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
-        //攻撃パターン0は近距離攻撃、1は遠距離攻撃とする、２は飛び道具攻撃とする
+
+        //攻撃パターン0は近距離攻撃
         if (AttackPatterns == 0)
         {
-            {
+            
                 playerBase.SetAttackTrue(playerBase.gameObject);
-                transform.DOMoveX(target.position.x - 2f, MoveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
+                transform.DOMoveX(target.position.x - 2f, moveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
                {
                    GameObject EF = Instantiate(_attackEffect[atkEffectIndex], target.position + new Vector3(0, 1, 0), Quaternion.identity);
                    Destroy(EF, 1f);
                    target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
                });
-            }
+
+                await UniTask.Delay(TimeSpan.FromSeconds(1));
+
+                transform.DOMoveX(origin, moveDuration).SetEase(Ease.OutQuad);
+            
         }
+        //1は遠距離攻撃
         else if (AttackPatterns == 1)
         {
            
@@ -217,21 +231,21 @@ public class PlayerController : MonoBehaviour
 
             target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
         }
+        //２は飛び道具攻撃
         else if (AttackPatterns == 2)
         {
             playerBase.SetAttackTrue(playerBase.gameObject);
             GameObject EF = Instantiate(_attackEffect[atkEffectIndex], transform.position + new Vector3(1, 0, 0), Quaternion.identity);
-            EF.transform.DOMove(target.position + new Vector3(0, 1, 0), MoveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
+            EF.transform.DOMove(target.position + new Vector3(0, 1, 0), moveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
             {
                 Destroy(EF);
                 target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
+                if(atkEffectIndex==2)//2は火の攻撃
+            　　EffectManager.Instance.InstanceFireEffect(target).Forget();
             });
         }
 
 
-        await UniTask.Delay(TimeSpan.FromSeconds(1));
-
-        transform.DOMoveX(origin, MoveDuration).SetEase(Ease.OutQuad);
         await UniTask.Yield();
     }
     
