@@ -1,15 +1,20 @@
-using Cysharp.Threading.Tasks;
 using UnityEngine;
+using System.Collections.Generic;
 
 
 //職業:魔女クラス
 public class Witch : PlayerBase
 {
     PlayerController _controller;
-    [SerializeField] GameObject _enemy;
+    //魔女の攻撃ルールを管理するリスト(書き込み専用)
+    [SerializeField]private List<JobAttackArray> _WitchAttackArrays  = new List<JobAttackArray>();
+    
 
 
-
+    private void OnEnable()
+    {
+        _jobAttackArrays=_WitchAttackArrays;
+    }
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
@@ -24,14 +29,4 @@ public class Witch : PlayerBase
      
     }
 
-    //魔女の攻撃ルール
-   　void WitchAttackrule(int _cardNum)
-    {
-      
-    }
-
-   
-    
-    
-   
 }

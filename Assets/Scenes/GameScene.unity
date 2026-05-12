@@ -6597,13 +6597,14 @@ GameObject:
   - component: {fileID: 1919795552}
   - component: {fileID: 1919795557}
   - component: {fileID: 1919795556}
+  - component: {fileID: 1919795558}
   m_Layer: 0
   m_Name: SwordMan
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1919795552
 SpriteRenderer:
   serializedVersion: 2
@@ -6696,12 +6697,20 @@ MonoBehaviour:
   Attack: 20
   _cardList:
   - {fileID: 4088144695865659119, guid: 6cc27f5ad2dc72a4ea19b47caf4e5af9, type: 3}
-  - {fileID: 4971950692533877748, guid: 6cc27f5ad2dc72a4ea19b47caf4e5af9, type: 3}
-  - {fileID: 5281472464355086475, guid: 6cc27f5ad2dc72a4ea19b47caf4e5af9, type: 3}
   - {fileID: 1658488424235845632, guid: 6cc27f5ad2dc72a4ea19b47caf4e5af9, type: 3}
   _attackEffect:
   - {fileID: 2638277236182187418, guid: 9c239e5acb780584ca40f30022308af6, type: 3}
+  _jobAttackArrays: []
   _enemy: {fileID: 0}
+  _SwordManAttackArrays:
+  - SkillName: Slash
+    AttackPower: 10
+    atkEffectIndex: 0
+    patten: 0
+  - SkillName: Air Slash
+    AttackPower: 20
+    atkEffectIndex: 0
+    patten: 2
 --- !u!4 &1919795555
 Transform:
   m_ObjectHideFlags: 0
@@ -6790,6 +6799,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &1919795558
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919795551}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 62a7cce6324cc7c448167e1d9ed812ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1990546148
 GameObject:
   m_ObjectHideFlags: 0
@@ -7115,7 +7146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 99397726516911364, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100438414803858807, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
       propertyPath: _screenEffect
@@ -7125,6 +7156,14 @@ PrefabInstance:
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 357065899}
+    - target: {fileID: 100438414803858807, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _jobAttackArrays.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100438414803858807, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _jobAttackArrays.Array.data[0].patten
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3813039537864884048, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.16
@@ -7172,6 +7211,74 @@ PrefabInstance:
     - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
       propertyPath: Attack
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: '_cardList.Array.data[1]'
+      value: 
+      objectReference: {fileID: -7426262274631301078, guid: 6cc27f5ad2dc72a4ea19b47caf4e5af9, type: 3}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: '_cardList.Array.data[2]'
+      value: 
+      objectReference: {fileID: -2094978114609419957, guid: 6cc27f5ad2dc72a4ea19b47caf4e5af9, type: 3}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[1].patten
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[2].patten
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[3].patten
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[0].SkillName
+      value: Slash
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[1].SkillName
+      value: FireBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[2].SkillName
+      value: Thunder
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[3].SkillName
+      value: Ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[0].AttackPower
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[1].AttackPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[2].AttackPower
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[3].AttackPower
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[1].atkEffectIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[2].atkEffectIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _WitchAttackArrays.Array.data[3].atkEffectIndex
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

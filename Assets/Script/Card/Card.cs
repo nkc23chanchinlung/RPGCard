@@ -25,19 +25,7 @@ public class Card : MonoBehaviour
     {
         _outLine.SetActive(false);
     }
-    //カードの効果連想配列
-    public Dictionary<string, int> cardDic = new Dictionary<string, int>()
-    {
-        {"attack",1},
-        {"FireBall",2},
-        {"heal",18}
-    };
     //カードの番号を設定する
-    public void SetCardNum(string cardName)
-    {
-        _cardNum = cardDic[cardName];
-    }
-    //カードの番号を設定する overload
     public void SetCardNum(int cardNum)
     {
         _cardNum = cardNum;

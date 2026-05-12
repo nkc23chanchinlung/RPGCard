@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// プレイヤー基底クラス
@@ -14,7 +15,8 @@ public class PlayerBase : MonoBehaviour
     Animator _animator;
     [SerializeField] Sprite[] _cardList; //カードリスト
     [SerializeField] GameObject[] _attackEffect;//0:斬撃 //1:サンダー
-
+    //職業ごとの攻撃ルールを管理するリスト(読み込み専用)
+    public List<JobAttackArray> _jobAttackArrays = new List<JobAttackArray>();
 
 
 

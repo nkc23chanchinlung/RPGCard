@@ -1,8 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System.Net.NetworkInformation;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {

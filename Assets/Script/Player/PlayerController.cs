@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
 /// <summary>
@@ -20,7 +19,7 @@ public class PlayerController : MonoBehaviour
     int _chanceLimit;
     [SerializeField] ScreenEffect _screenEffect;
     PlayerBase _player;
-
+    
     
 
     private void Awake()
@@ -37,20 +36,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SelectCard();
-
-        //デバッグ用の攻撃処理
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-           AttackProcess(_enemy.transform, 10,1,1).Forget();
-        }
-
-    }
-    private void FixedUpdate()
-    {
         ListManagement(_cardLimit);
-       
-       
+     
     }
+
 
     /// <summary>
     /// カードを選択する関数
@@ -73,14 +62,6 @@ public class PlayerController : MonoBehaviour
             {
                 card.ShowSprite();
                 card.IsChoose = true;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            foreach (var card in _selectedCard)
-            {
-                Debug.Log(card.name);
             }
         }
     }
@@ -149,15 +130,17 @@ public class PlayerController : MonoBehaviour
         await UniTask.Delay(1000);
         int _cardNum = card1.GetCardNum();
 
-        //職業の攻撃パターン　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<---独立させるべき
-        if (_cardNum==1) AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 1).Forget();
-        else if(_cardNum==2) AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 2).Forget();
-        else AttackProcess(_enemy.transform, 10, card1.GetCardNum(), 0).Forget();
+        //攻撃処理
+        AttackProcess(_enemy.transform,
+           (int)_player._jobAttackArrays[_cardNum].AttackPower,
+           (int)_player._jobAttackArrays[_cardNum].atkEffectIndex,
+           (int)_player._jobAttackArrays[_cardNum].patten)
+            .Forget();
 
+        //カードを削除する処理
         CardManager.Instance.RemoveCardList(card1, card2).Forget();
         Destroy(card1.gameObject);
         Destroy(card2.gameObject);
-        
 
     }
     /// <summary>
@@ -203,51 +186,46 @@ public class PlayerController : MonoBehaviour
         float moveDuration = 0.5f; //移動時間
         PlayerBase playerBase = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
 
+        GameObject EF;
         //攻撃パターン0は近距離攻撃
-        if (AttackPatterns == 0)
+        switch (AttackPatterns)
         {
-            
+            case 0:
                 playerBase.SetAttackTrue(playerBase.gameObject);
                 transform.DOMoveX(target.position.x - 2f, moveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
-               {
-                   GameObject EF = Instantiate(_attackEffect[atkEffectIndex], target.position + new Vector3(0, 1, 0), Quaternion.identity);
-                   Destroy(EF, 1f);
-                   target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
-               });
+                {
+                    EF = Instantiate(_attackEffect[atkEffectIndex], target.position + new Vector3(0, 1, 0), Quaternion.identity);
+                    Destroy(EF, 1f);
+                    target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
+                });
 
                 await UniTask.Delay(TimeSpan.FromSeconds(1));
 
                 transform.DOMoveX(origin, moveDuration).SetEase(Ease.OutQuad);
-            
-        }
-        //1は遠距離攻撃
-        else if (AttackPatterns == 1)
-        {
-           
-            playerBase.SetAttackTrue(playerBase.gameObject);
-            GameObject EF = Instantiate(_attackEffect[atkEffectIndex], target.position + new Vector3(0, 1, 0), Quaternion.identity);
-            Destroy(EF, 1f);
-           
+                break;
+            //1は遠距離攻撃
+            case 1:
+                playerBase.SetAttackTrue(playerBase.gameObject);
+                EF = Instantiate(_attackEffect[atkEffectIndex], target.position + new Vector3(0, 1, 0), Quaternion.identity);
+                Destroy(EF, 1f);
 
-            target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
-        }
-        //２は飛び道具攻撃
-        else if (AttackPatterns == 2)
-        {
-            playerBase.SetAttackTrue(playerBase.gameObject);
-            GameObject EF = Instantiate(_attackEffect[atkEffectIndex], transform.position + new Vector3(1, 0, 0), Quaternion.identity);
-            EF.transform.DOMove(target.position + new Vector3(0, 1, 0), moveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
-            {
-                Destroy(EF);
+
                 target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
-                if(atkEffectIndex==2)//2は火の攻撃
-            　　EffectManager.Instance.InstanceFireEffect(target).Forget();
-            });
+                break;
+            case 2:
+                //２は飛び道具攻撃
+                playerBase.SetAttackTrue(playerBase.gameObject);
+                 EF = Instantiate(_attackEffect[atkEffectIndex], transform.position + new Vector3(1, 0, 0), Quaternion.identity);
+                EF.transform.DOMove(target.position + new Vector3(0, 1, 0), moveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
+                {
+                    Destroy(EF);
+                    target.gameObject.GetComponent<EnemyBase>().TakeDamage(atk);
+                    if (atkEffectIndex == 2)//2は火の攻撃
+                        EffectManager.Instance.InstanceFireEffect(target).Forget();
+                });
+                break;
+
         }
-
-
         await UniTask.Yield();
     }
-    
-
 }
