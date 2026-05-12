@@ -6604,7 +6604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1919795552
 SpriteRenderer:
   serializedVersion: 2
@@ -6700,6 +6700,8 @@ MonoBehaviour:
   - {fileID: 1658488424235845632, guid: 6cc27f5ad2dc72a4ea19b47caf4e5af9, type: 3}
   _attackEffect:
   - {fileID: 2638277236182187418, guid: 9c239e5acb780584ca40f30022308af6, type: 3}
+  - {fileID: 1325853565380214911, guid: 6427e531cfaa54647b809ff42e3a2bf0, type: 3}
+  - {fileID: 6896723264366298177, guid: d69f747ee10c0e74783137588b505a5d, type: 3}
   _jobAttackArrays: []
   _enemy: {fileID: 0}
   _SwordManAttackArrays:
@@ -7146,7 +7148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 99397726516911364, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100438414803858807, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
       propertyPath: _screenEffect
@@ -7221,6 +7223,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2094978114609419957, guid: 6cc27f5ad2dc72a4ea19b47caf4e5af9, type: 3}
     - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: _attackEffect.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+      propertyPath: '_attackEffect.Array.data[3]'
+      value: 
+      objectReference: {fileID: 6714389618813248341, guid: 196504764a1854c44be75e8fd0d11a05, type: 3}
+    - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
       propertyPath: _WitchAttackArrays.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -7234,7 +7244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
       propertyPath: _WitchAttackArrays.Array.data[3].patten
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
       propertyPath: _WitchAttackArrays.Array.data[0].SkillName
@@ -7278,7 +7288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7498579673534010304, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
       propertyPath: _WitchAttackArrays.Array.data[3].atkEffectIndex
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

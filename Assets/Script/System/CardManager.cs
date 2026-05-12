@@ -14,7 +14,7 @@ public class CardManager : MonoBehaviour
     int _cardNum = 0; //カードの枚数
     [SerializeField]int _instanceX, _instanceY; //カードの生成位置
     [SerializeField]Sprite[] _cardSprite; //カードのスプライト
-    [SerializeField] List<Card> _instantCardList; //生成したカード管理するリスト
+    public List<Card> _instantCardList; //生成したカード管理するリスト
      int _sameCardValue = 0; //同じカードの値を管理する変数
     PlayerBase _player;
     DataManager _dataManager;
@@ -163,5 +163,9 @@ public class CardManager : MonoBehaviour
         _instantCardList.Remove(card2);
 
         await UniTask.Yield();
+    }
+    public List<Card> GetCardList()
+    {
+        return _instantCardList;
     }
 }
