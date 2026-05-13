@@ -5,7 +5,15 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
 
-   
+    int _stageNum;
+    public int ItemNum { set; get; }
+    DataManager datemanager;
+
+    private void Start()
+    {
+        
+    }
+
 
 }
 

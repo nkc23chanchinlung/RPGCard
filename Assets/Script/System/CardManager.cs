@@ -36,12 +36,13 @@ public class CardManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-       _dataManager._sameCardValue = _sameCardValue;
         
 
     }
     void Update()
     {
+        _dataManager._sameCardValue = _sameCardValue;
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             Noduplicatesultiple().Forget();
