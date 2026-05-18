@@ -47,12 +47,12 @@ public class DataManager : MonoBehaviour
     {
         return "killedMonsterValus:"+_killedMonsterValus.ToString();
     }
-    string LoadData(string path)
-    {
-        saveDate = new SaveDate();
+    //string LoadData(string path)
+    //{
+    //    saveDate = new SaveDate();
        
-        return JsonUtility.FromJson<SaveDate>()
-    }
+    //    return JsonUtility.FromJson<SaveDate>()
+    //}
 }
 public class SaveDate
 {
