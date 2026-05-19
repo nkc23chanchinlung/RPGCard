@@ -1,9 +1,15 @@
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System;
 //ゲーム管理クラス
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; //シングルトンインスタンス
+    public static event Action OnGameStart; //ゲーム開始時のイベント
+    public static bool IsGameInit = false;
+  
 
 
     [SerializeField] Toggle _debug_Mode_Toggle; //デバッグモードのトグル
@@ -14,14 +20,19 @@ public class GameManager : MonoBehaviour
     public int PlayingCharactorId { get; set; }//プレイヤー選択したキャラID 1:魔法使い　2:剣士
     public bool GameStart { get; set; }
     GameSceneManager _gameSceneManager;
+    [SerializeField]GameObject[] _charactorlist;
+    bool _isInit = false;//初期化フラグ
     
-
     
     
     //ゲーム開始するとき初期化
-    void GameInit()
+    public void GameInit(int charnum)
     {
-       
+        _charactorlist = GameSceneManager.Instance._charactorPreList;
+        InstanceCharactor(charnum);
+        OnGameStart?.Invoke();
+
+
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,11 +44,23 @@ public class GameManager : MonoBehaviour
     {
         if(_debug_Mode_Toggle!=null)
         _isDebugMode = _debug_Mode_Toggle.isOn;
+
+        if (!GameStart) _isInit=false;
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if (_isInit == false && SceneManager.GetActiveScene().name == "GameScene")
+        {
+            GameInit(PlayingCharactorId);
+            UnityEngine.Debug.Log(PlayingCharactorId);
+            _isInit=true;
+        }
+    }
+    void InstanceCharactor(int num)
+    {
+         
+        _charactorlist[num].SetActive(true);
     }
     
     void CheakGameManagerExist()
@@ -52,6 +75,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+  
     
 }

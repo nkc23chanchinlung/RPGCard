@@ -1,7 +1,10 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using NUnit.Framework;
 using System;
 using UnityEngine;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 /// <summary>
 /// 敵の基底クラス
 /// </summary>
@@ -79,6 +82,15 @@ public class EnemyBase : MonoBehaviour
         await UniTask.Yield();
     }
 
+
+    //制作中
+    public virtual void SkillProcess(int CardNum)
+    {
+        List<Card> cardlist = CardManager.Instance._instantCardList;
+
+        cardlist[CardNum]._debuff =Card.Debuff.Water;
+       
+    }
 
 
 

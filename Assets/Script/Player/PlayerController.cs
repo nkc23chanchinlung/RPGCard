@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     int _chanceLimit;
     [SerializeField] ScreenEffect _screenEffect;
     PlayerBase _player;
-    
+    [SerializeField] Transform _playerOrigin;//プレイヤー原点
     
 
     private void Awake()
@@ -39,12 +39,17 @@ public class PlayerController : MonoBehaviour
         ListManagement(_cardLimit);
      
     }
+    private void OnEnable()
+    {
+        transform.position = new Vector3(-10, 3, 0);
+        VecterOrigin().Forget();
+    }
 
 
     /// <summary>
     /// カードを選択する関数
     /// </summary>
-   public void SelectCard()
+    public void SelectCard()
     {
         GameObject hitObject = MouseCollider();
 
@@ -227,5 +232,10 @@ public class PlayerController : MonoBehaviour
 
         }
         await UniTask.Yield();
+    }
+    async UniTask VecterOrigin()
+    {
+        var originworldpos = Camera.main.ScreenToWorldPoint(_playerOrigin.position);
+        transform.DOMoveX(originworldpos.x, 1f);
     }
 }

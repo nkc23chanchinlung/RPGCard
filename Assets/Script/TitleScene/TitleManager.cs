@@ -17,4 +17,8 @@ public class TitleManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("CharatorSelcet");
     }
+    public void ExitButton()
+    {
+        Application.Quit();
+    }
 }

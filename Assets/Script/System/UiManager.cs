@@ -2,6 +2,8 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 public class UiManager : MonoBehaviour
 {
     public static UiManager Instance;
@@ -17,6 +19,8 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     GameObject[] _itemsSlot;
     Animator _bag_Anim;
+    [SerializeField] GameObject Menu;
+    bool _isOnce = false;
 
     bool _isTouchingBag = false;
 
@@ -25,6 +29,12 @@ public class UiManager : MonoBehaviour
         CheckUIManagerExist();
         _bag_Anim = _bag.GetComponent<Animator>();
         TouchColInstance();
+        if (!_isOnce)
+        {
+            Debug.Log("Exit");
+           
+            _isOnce = true;
+        }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
    
@@ -33,7 +43,8 @@ public class UiManager : MonoBehaviour
     void Update()
     {
         BagProess();
-
+        OpenPanel(Menu, KeyCode.Escape);
+        
 
 
         if (GameManager.Instance._isDebugMode)
@@ -157,12 +168,33 @@ public class UiManager : MonoBehaviour
           UITouchCollider(i, 1f);
         }
     }
+    public void OpenPanel(GameObject Panel,KeyCode code)
+    {
+        if (Panel.activeSelf == false)
+        {
+            if (Input.GetKeyDown(code))
+                Panel.SetActive(true);
+        }
+        else if (Panel.activeSelf == true)
+        {
+            if (Input.GetKeyDown(code))
+                Panel.SetActive(false);
+        }
+    }
+   
 
     public void Open_Bag()
     {
         _itemSlot.SetActive(true);
         _itemSlot.transform.DOScaleY(2, 0.5f).SetEase(Ease.OutBounce);
     }
+    public void Exit()
+    {
+        SceneManager.LoadScene("TitleScene");
+        //GameManager.IsGameStart = false;
+        GameManager.Instance.GameStart = false;
 
+    }
+  
 
 }

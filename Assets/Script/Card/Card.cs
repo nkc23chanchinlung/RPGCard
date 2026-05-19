@@ -9,6 +9,14 @@ public class Card : MonoBehaviour
    [SerializeField] int _cardNum; //カードの番号
     GameObject _outLine;
     Animator _animator;
+   public enum Debuff
+    {
+        Null,
+        Water,
+        Fire,
+        
+    }
+    public Debuff _debuff;
     public bool IsChoose { get; set; } //カードが選択されているかどうか
 
     

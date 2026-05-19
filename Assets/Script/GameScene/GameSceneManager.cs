@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameSceneManager : MonoBehaviour
 {
     static public GameSceneManager Instance;
-    [SerializeField] GameObject[] _charactorPre;
+    [SerializeField] public GameObject[] _charactorPreList;
 
 
     private void Awake()
@@ -17,7 +17,7 @@ public class GameSceneManager : MonoBehaviour
     /// <param name="charID">キャラID</param>
     public void InstandCharactor(int charID)
     {
-        Instantiate(_charactorPre[charID],new Vector3(-10,3,0), Quaternion.identity);
+        Instantiate(_charactorPreList[charID],new Vector3(-10,3,0), Quaternion.identity);
     }
 
 }

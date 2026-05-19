@@ -2,7 +2,6 @@ using Cainos.LucidEditor;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using NUnit.Framework;
-using System;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -21,9 +20,11 @@ public class Slime : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.J)) 
-        AttackProcess(GameObject.FindGameObjectWithTag("Player").transform, Attack).Forget();
         
+        if (Input.GetKeyUp(KeyCode.J))
+            SkillProcess(Random.Range(0, 2));
+
+
     }
 
     //カードを目標に向かって投げる処理

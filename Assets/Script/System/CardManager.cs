@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 //カードの生成と管理を行うクラス
 
+
 public class CardManager : MonoBehaviour
 {
     static public CardManager Instance;
@@ -14,30 +15,36 @@ public class CardManager : MonoBehaviour
     int _cardNum = 0; //カードの枚数
     [SerializeField]int _instanceX, _instanceY; //カードの生成位置
     [SerializeField]Sprite[] _cardSprite; //カードのスプライト
-    public List<Card> _instantCardList; //生成したカード管理するリスト
+    public List<Card> _instantCardList;//生成したカード管理するリスト
      int _sameCardValue = 0; //同じカードの値を管理する変数
     PlayerBase _player;
     DataManager _dataManager;
-
+    bool _isOnce;
 
     private void Awake()
     {
         Instance = this;
-        _player=GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+        
+     
     }
     void Start()
     {
-        _dataManager = DataManager.Instance;
-        
-        InstanceCard(2.0f, -4).Forget() ;
-        _cardSprite = _player.GetCardList();
+        if (!GameManager.IsGameInit)
+        {
+            Debug.Log("ADDGameStart");
 
+            GameManager.OnGameStart += this.OnGameStart;
+            GameManager.IsGameInit=true;
 
+        }
     }
-    private void FixedUpdate()
+   void OnGameStart()
     {
-        
+        _player = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+        _dataManager = DataManager.Instance;
 
+        InstanceCard(2.0f, -4).Forget();
+        _cardSprite = _player.GetCardList();
     }
     void Update()
     {
@@ -56,6 +63,7 @@ public class CardManager : MonoBehaviour
     /// <returns></returns>
     async  UniTask InstanceCard(float distance,int initvalue)
     {
+        Debug.Log("Instace");
         GameObject instobj;
         
         for (int i = 0; i < _instanceY; i++)
