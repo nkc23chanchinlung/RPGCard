@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //職業:剣士クラス
-public class SwordMan :PlayerBase
+public sealed class SwordMan :PlayerBase
 {
     PlayerController _controller;
     [SerializeField] GameObject _enemy;

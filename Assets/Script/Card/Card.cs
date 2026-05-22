@@ -9,7 +9,10 @@ public class Card : MonoBehaviour
    [SerializeField] int _cardNum; //ÉJÅ[ÉhÇÃî‘çÜ
     GameObject _outLine;
     Animator _animator;
-   public enum Debuff
+    [SerializeField] GameObject _debuff_Water;
+    [SerializeField] GameObject _debuff_Fire;
+
+    public enum Debuff
     {
         Null,
         Water,
@@ -74,4 +77,26 @@ public class Card : MonoBehaviour
     {
        Destroy(gameObject);
     }
+     public void SetCardDebuff(Debuff debuff)
+    {
+        SpriteRenderer spriteRenderer =GetComponent<SpriteRenderer>();
+        Debug.Log(spriteRenderer);
+        _debuff = debuff;
+        if (_debuff == Debuff.Water)
+        {
+            //_debuff_Water.SetActive(true);
+            spriteRenderer.color = Color.blue;
+            Debug.Log("Water");
+        }
+        else if(_debuff == Debuff.Fire)
+        {
+           // _debuff_Fire.SetActive(true);
+        }
+        else
+        {
+            //_debuff_Water.SetActive(false);
+            //_debuff_Fire.SetActive(false);
+            spriteRenderer.color = Color.white;
+        }
+    }    
 }

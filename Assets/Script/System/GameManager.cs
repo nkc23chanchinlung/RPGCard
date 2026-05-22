@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; //シングルトンインスタンス
     public static event Action OnGameStart; //ゲーム開始時のイベント
-    public static bool IsGameInit = false;
+    public  bool IsGameInit = false;
   
 
 
@@ -22,6 +21,8 @@ public class GameManager : MonoBehaviour
     GameSceneManager _gameSceneManager;
     [SerializeField]GameObject[] _charactorlist;
     bool _isInit = false;//初期化フラグ
+
+   
     
     
     
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         _charactorlist = GameSceneManager.Instance._charactorPreList;
         InstanceCharactor(charnum);
         OnGameStart?.Invoke();
+        
 
 
     }
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
       //  string SceneName =SceneManager.GetActiveScene().name;
         CheakGameManagerExist();
+
     }
     private void FixedUpdate()
     {

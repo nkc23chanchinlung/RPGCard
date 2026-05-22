@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 /// <summary>
 /// プレイヤー基底クラス
@@ -15,6 +16,7 @@ public class PlayerBase : MonoBehaviour
     Animator _animator;
     [SerializeField] Sprite[] _cardList; //カードリスト
     [SerializeField] GameObject[] _attackEffect;//0:斬撃 //1:サンダー
+    [SerializeField] Image _hpBar; //HPバー
     //職業ごとの攻撃ルールを管理するリスト(読み込み専用)
     public List<JobAttackArray> _jobAttackArrays = new List<JobAttackArray>();
 
@@ -30,6 +32,14 @@ public class PlayerBase : MonoBehaviour
         Hp -= damage;
         UiManager.Instance.CreateDmg_Text(transform, damage).Forget();
         Shake(duration, strength).Forget();
+        _hpBar.fillAmount = Hp / MaxHP;
+        if(Hp <= 0)
+        {
+            Hp = 0;
+           
+            Debug.Log("プレイヤーは倒れた");
+            //ゲームオーバー処理
+        }
         await UniTask.Yield();
        
 
@@ -52,13 +62,19 @@ public class PlayerBase : MonoBehaviour
         }
         Camera.main.transform.position = startPos;
     }
-
+    /// <summary>
+    /// 攻撃アニメーション開始関数
+    /// </summary>
+    /// <param name="obj">ゲームオブジェクト</param>
     public void SetAttackTrue(GameObject obj)
     {
         //Animator _animator;
        _animator = obj.GetComponent<Animator>();
         _animator.SetBool("IsAttack", true);
     }
+    /// <summary>
+    /// 攻撃アニメーション終了関数
+    /// </summary>
     public void SetAttackFalse()
     {
         Debug.Log("攻撃アニメーション終了");

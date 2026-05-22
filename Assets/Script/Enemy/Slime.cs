@@ -7,9 +7,10 @@ using System.Collections.Generic;
 
 
 //制作中
-public class Slime : EnemyBase
+public sealed class Slime : EnemyBase
 {
     bool _isAttacking; // 攻撃中かどうかのフラグ
+    [SerializeField] GameObject _waterBall_Pre; // 水の玉のプレハブ
     List<Card> _card;
    
 
@@ -20,9 +21,14 @@ public class Slime : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKeyUp(KeyCode.J))
-            SkillProcess(Random.Range(0, 2));
+
+
+
+
+        CardList = CardManager.Instance.GetCardList();
+
+        if (Input.GetKeyDown(KeyCode.J))
+            SkillProcess(Random.Range(0, CardList.Count));
 
 
     }

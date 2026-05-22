@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 
 //職業:魔女クラス
-public class Witch : PlayerBase
+public sealed class Witch : PlayerBase
 {
     PlayerController _controller;
     //魔女の攻撃ルールを管理するリスト(書き込み専用)

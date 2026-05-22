@@ -17,12 +17,19 @@ public class EnemyBase : MonoBehaviour
     public float Speed;
     public int Defense;
     public int Level;
-    
+
+
+    public List<Card> CardList;
+
+
+
 
     private void Awake()
     {
         
     }
+   
+   
     /// <summary>
     /// ダメージ受ける関数
     /// </summary>
@@ -86,9 +93,9 @@ public class EnemyBase : MonoBehaviour
     //制作中
     public virtual void SkillProcess(int CardNum)
     {
-        List<Card> cardlist = CardManager.Instance._instantCardList;
+       
 
-        cardlist[CardNum]._debuff =Card.Debuff.Water;
+        CardList[CardNum].SetCardDebuff(Card.Debuff.Water);
        
     }
 

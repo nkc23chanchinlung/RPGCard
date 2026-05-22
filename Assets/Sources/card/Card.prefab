@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardInfo
   _cardNum: 0
+  _debuff_Water: {fileID: 0}
+  _debuff: 0
 --- !u!212 &4612291693541046208
 SpriteRenderer:
   serializedVersion: 2
