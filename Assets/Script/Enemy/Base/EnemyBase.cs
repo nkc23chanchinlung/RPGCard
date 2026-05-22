@@ -18,6 +18,8 @@ public class EnemyBase : MonoBehaviour
     public int Defense;
     public int Level;
 
+    public PlayerBase player;
+
 
     public List<Card> CardList;
 

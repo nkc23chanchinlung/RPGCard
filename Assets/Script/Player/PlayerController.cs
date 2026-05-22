@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
             case 2:
                 //‚Q‚Í”ò‚Ñ“¹‹ïUŒ‚
                 playerBase.SetAttackTrue(playerBase.gameObject);
-                 EF = Instantiate(_attackEffect[atkEffectIndex], transform.position + new Vector3(1, 0, 0), Quaternion.identity);
+                EF = Instantiate(_attackEffect[atkEffectIndex], transform.position + new Vector3(1, 0, 0), Quaternion.identity);
                 EF.transform.DOMove(target.position + new Vector3(0, 1, 0), moveDuration).SetEase(Ease.OutQuad).OnComplete(() =>
                 {
                     Destroy(EF);

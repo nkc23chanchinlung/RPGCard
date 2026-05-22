@@ -12,11 +12,11 @@ public sealed class Slime : EnemyBase
     bool _isAttacking; // 攻撃中かどうかのフラグ
     [SerializeField] GameObject _waterBall_Pre; // 水の玉のプレハブ
     List<Card> _card;
-   
 
-    private void Awake()
+
+    private void OnEnable()
     {
-        
+        player=GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
     }
     // Update is called once per frame
     void Update()
@@ -38,6 +38,12 @@ public sealed class Slime : EnemyBase
     {
         _card = CardManager.Instance.GetCardList();
 
+    }
+    public override void SkillProcess(int CardNum)
+    {
+        base.SkillProcess(CardNum);
+        //水玉移動プロセス　＜－－－－開発中
+        GameObject _waterball = Instantiate(_waterBall_Pre, transform.position, player.transform.rotation);
     }
    
 }
