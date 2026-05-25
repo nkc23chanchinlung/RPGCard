@@ -14,9 +14,19 @@ public sealed class Slime : EnemyBase
     List<Card> _card;
 
 
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+
+    }
     private void OnEnable()
     {
-        player=GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+        try
+        {
+            player = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+        } catch { 
+        Debug.LogError("PlayerBaseコンポーネントが見つかりませんでした。PlayerオブジェクトにPlayerBaseコンポーネントがアタッチされていることを確認してください。");
+        }
     }
     // Update is called once per frame
     void Update()
@@ -41,9 +51,21 @@ public sealed class Slime : EnemyBase
     }
     public override void SkillProcess(int CardNum)
     {
+       // int sum = 1;
         base.SkillProcess(CardNum);
+        Debug.Log("Skill");
         //水玉移動プロセス　＜－－－－開発中
-        GameObject _waterball = Instantiate(_waterBall_Pre, transform.position, player.transform.rotation);
+        GameObject _waterball = Instantiate(_waterBall_Pre, transform.position, Quaternion.identity);
+        WaterBall waterBallScript = _waterball.GetComponent<WaterBall>();
+        waterBallScript.Target = CardList[CardNum].gameObject;
+
+
+
+        // _waterball. transform.DOMove(CardList[CardNum].transform.position, 1f).OnComplete(() => {
+
+        //    Destroy(_waterball);
+        //});
     }
-   
+  
+
 }
