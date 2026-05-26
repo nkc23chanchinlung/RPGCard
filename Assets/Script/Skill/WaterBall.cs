@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// 敵攻撃:水玉クラス
@@ -21,7 +22,7 @@ public class WaterBall : MonoBehaviour
         if (absDistance < 1f&&!_isHit)
         {
             _isHit = true;
-            HitPocess();
+            HitPocess().Forget();
         }
        
             
@@ -30,18 +31,21 @@ public class WaterBall : MonoBehaviour
     /// <summary>
     /// 当たった後の処理
     /// </summary>
-    void HitPocess()
+   async UniTask HitPocess()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector3.zero;
         rb.bodyType = RigidbodyType2D.Kinematic; // 物理挙動を停止
 
-        transform.localEulerAngles = Vector3.zero;
-        Vector3 pos = transform.position;
-        transform.position = new Vector3(pos.x-0.5f, pos.y-1.3f, pos.z); // Z軸を0に固定
+        
 
         _animator = GetComponent<Animator>();
         _animator.SetBool("IsHit", _isHit);
+        await UniTask.Delay(100);
+        transform.localEulerAngles = Vector3.zero;
+        Vector3 pos = transform.position;
+        transform.position = new Vector3(pos.x - 0.5f, pos.y - 1.3f, pos.z); // Z軸を0に固定
+
         Card card = Target.GetComponent<Card>();
         card.SetCardDebuff(Card.Debuff.Water);
         Destroy(gameObject, 0.5f);
