@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// 敵攻撃:水玉クラス
+/// </summary>
 public class WaterBall : MonoBehaviour
 {
     public GameObject Target { get; set; }
@@ -39,8 +42,9 @@ public class WaterBall : MonoBehaviour
 
         _animator = GetComponent<Animator>();
         _animator.SetBool("IsHit", _isHit);
-
-         Destroy(gameObject, 0.5f);
+        Card card = Target.GetComponent<Card>();
+        card.SetCardDebuff(Card.Debuff.Water);
+        Destroy(gameObject, 0.5f);
         
     }
 

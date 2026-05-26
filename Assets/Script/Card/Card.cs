@@ -77,7 +77,11 @@ public class Card : MonoBehaviour
     {
        Destroy(gameObject);
     }
-     public void SetCardDebuff(Debuff debuff)
+    /// <summary>
+    /// カードをデバフ状態にする関数
+    /// </summary>
+    /// <param name="debuff">デバフ</param>
+    public void SetCardDebuff(Debuff debuff)
     {
         SpriteRenderer spriteRenderer =GetComponent<SpriteRenderer>();
         Debug.Log(spriteRenderer);

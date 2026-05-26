@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 
@@ -8,7 +9,7 @@ public sealed class Slime : EnemyBase
     bool _isAttacking; // 攻撃中かどうかのフラグ
     [SerializeField] GameObject _waterBall_Pre; // 水の玉のプレハブ
     List<Card> _card;
-
+    [SerializeField] Image _skill_gauge;
 
     private void Start()
     {

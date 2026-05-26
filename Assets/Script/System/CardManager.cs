@@ -116,16 +116,11 @@ public class CardManager : MonoBehaviour
                 Debug.Log(cardInfo.GetCardNum());
                 InstantCardList.Add(cardInfo);
                 TestGameStartNum++;
-                Debug.Log("TestGameStartNum:" + TestGameStartNum);
                 cardInfo.SetCardNum(Random.Range(0, _cardSprite.Length));
                 var img = instobj.transform.Find("Img").GetComponent<SpriteRenderer>();
                 //カードのスプライトを設定
                 img.sprite = _cardSprite[cardInfo.GetCardNum()];
 
-                if (cardInfo.GetCardNum()==0)
-                {
-                    Debug.Log("攻撃");
-                }
                 await UniTask.Delay(100); //カード生成の間隔を調整
             }
         }

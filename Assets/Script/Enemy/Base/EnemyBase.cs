@@ -17,10 +17,11 @@ public class EnemyBase : MonoBehaviour
     public float Speed;
     public int Defense;
     public int Level;
-
+    float _skill_Timer;
+    
     public PlayerBase player;
 
-
+    public List<Skill> SkillList;
     public List<Card> CardList;
 
 
@@ -91,13 +92,24 @@ public class EnemyBase : MonoBehaviour
         await UniTask.Yield();
     }
 
-
+    public async UniTask<bool> SkillTimer(float Cooldown)
+    {
+        bool isSkillReady = false;
+        _skill_Timer = Cooldown;
+        while (_skill_Timer > 0)
+        {
+            _skill_Timer -= Time.deltaTime;
+            await UniTask.Yield();
+        }
+        isSkillReady = true;
+        return isSkillReady;
+    }
     //制作中
     public virtual void SkillProcess(int CardNum)
     {
        
 
-        CardList[CardNum].SetCardDebuff(Card.Debuff.Water);
+       // CardList[CardNum].SetCardDebuff(Card.Debuff.Water);
        
     }
 
