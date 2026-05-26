@@ -7,18 +7,42 @@ public class WaterBall : MonoBehaviour
     [SerializeField] int _speed;
     [SerializeField] int rotateSpeed;   
     Rigidbody2D rb;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    Animator _animator;
+    bool _isHit=false;
 
     private void FixedUpdate()
     {
-        WaterballShoot(transform.gameObject, _speed, Target.transform);
+        
         float Distance = Vector2.Distance(transform.position, Target.transform.position);
         float absDistance = Mathf.Abs(Distance);
-        if(absDistance <1f)Destroy(gameObject);
-
+        if (absDistance < 1f&&!_isHit)
+        {
+            _isHit = true;
+            HitPocess();
+        }
+       
+            
+            WaterballShoot(transform.gameObject, _speed, Target.transform);
     }
+    /// <summary>
+    /// 当たった後の処理
+    /// </summary>
+    void HitPocess()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = Vector3.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic; // 物理挙動を停止
 
+        transform.localEulerAngles = Vector3.zero;
+        Vector3 pos = transform.position;
+        transform.position = new Vector3(pos.x-0.5f, pos.y-1.3f, pos.z); // Z軸を0に固定
+
+        _animator = GetComponent<Animator>();
+        _animator.SetBool("IsHit", _isHit);
+
+         Destroy(gameObject, 0.5f);
+        
+    }
 
     /// <summary>
     /// 水玉をターゲットに向かって放つ関数
@@ -28,6 +52,8 @@ public class WaterBall : MonoBehaviour
     /// <param name="target"></param>
     public void WaterballShoot(GameObject obj, int speed, Transform target)
     {
+        if (_isHit) return;
+
         // 1. ターゲットへの相対ベクトルを計算
         Vector2 diff = target.transform.position - transform.position;
          rb = obj.GetComponent<Rigidbody2D>();

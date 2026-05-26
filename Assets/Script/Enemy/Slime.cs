@@ -1,7 +1,3 @@
-using Cainos.LucidEditor;
-using Cysharp.Threading.Tasks;
-using DG.Tweening;
-using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -51,7 +47,7 @@ public sealed class Slime : EnemyBase
     }
     public override void SkillProcess(int CardNum)
     {
-       // int sum = 1;
+      
         base.SkillProcess(CardNum);
         Debug.Log("Skill");
         //水玉移動プロセス　＜－－－－開発中
@@ -61,10 +57,7 @@ public sealed class Slime : EnemyBase
 
 
 
-        // _waterball. transform.DOMove(CardList[CardNum].transform.position, 1f).OnComplete(() => {
-
-        //    Destroy(_waterball);
-        //});
+      
     }
   
 

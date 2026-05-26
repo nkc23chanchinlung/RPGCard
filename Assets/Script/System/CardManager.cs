@@ -64,7 +64,6 @@ public class CardManager : MonoBehaviour
     void Update()
     {
      //  _dataManager._sameCardValue = _sameCardValue;
-        Debug.Log("GameInit:" + GameManager.Instance.IsGameInit);
         if (Input.GetKeyDown(KeyCode.R))
         {
             Noduplicatesultiple().Forget();
