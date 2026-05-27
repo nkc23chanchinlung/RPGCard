@@ -50,8 +50,7 @@ public sealed class Slime : EnemyBase
     {
       
         base.SkillProcess(CardNum);
-        Debug.Log("Skill");
-        //水玉移動プロセス　＜－－－－開発中
+        //水玉移動プロセス
         GameObject _waterball = Instantiate(_waterBall_Pre, transform.position, Quaternion.identity);
         WaterBall waterBallScript = _waterball.GetComponent<WaterBall>();
         waterBallScript.Target = CardList[CardNum].gameObject;

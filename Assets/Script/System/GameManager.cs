@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
         if (_isInit == false && SceneManager.GetActiveScene().name == "GameScene")
         {
             GameInit(PlayingCharactorId);
-            UnityEngine.Debug.Log(PlayingCharactorId);
             _isInit=true;
         }
     }

@@ -1,10 +1,16 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 //GameScene必要な関数クラス
 public class GameSceneManager : MonoBehaviour
 {
     static public GameSceneManager Instance;
     [SerializeField] public GameObject[] _charactorPreList;
+
+    [SerializeField]List<GameObject> _enemyPreList;
+
+    public List<GameObject> InstantedEnemyPreList;
 
 
     private void Awake()
