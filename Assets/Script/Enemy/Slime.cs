@@ -13,7 +13,7 @@ public sealed class Slime : EnemyBase
 
     private void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+        player = GameManager.Instance.PlayerCharactor.GetComponent<PlayerBase>();
 
     }
     private void OnEnable()

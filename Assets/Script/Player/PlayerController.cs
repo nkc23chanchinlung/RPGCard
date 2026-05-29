@@ -31,7 +31,13 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+       
+    }
+    public void Init()
+    {
         _attackEffect = _player.GetAttackEffect();
+       
+        VecterOrigin().Forget();
     }
     void Update()
     {
@@ -39,11 +45,11 @@ public class PlayerController : MonoBehaviour
         ListManagement(_cardLimit);
      
     }
-    private void OnEnable()
-    {
-        transform.position = new Vector3(-10, 3, 0);
-        VecterOrigin().Forget();
-    }
+    //private void OnEnable()
+    //{
+    //    transform.position = new Vector3(-10, 3, 0);
+    //    VecterOrigin().Forget();
+    //}
 
 
     /// <summary>
@@ -189,7 +195,7 @@ public class PlayerController : MonoBehaviour
     {
         float origin = -6f; //原点
         float moveDuration = 0.5f; //移動時間
-        PlayerBase playerBase = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+        PlayerBase playerBase = GameManager.Instance.PlayerCharactor.GetComponent<PlayerBase>();
 
         GameObject EF;
         //攻撃パターン0は近距離攻撃
@@ -235,7 +241,7 @@ public class PlayerController : MonoBehaviour
     }
     async UniTask VecterOrigin()
     {
-        var originworldpos = Camera.main.ScreenToWorldPoint(_playerOrigin.position);
-        transform.DOMoveX(originworldpos.x, 1f);
+        
+        transform.DOMoveX(transform.position.x+4f, 1f);
     }
 }

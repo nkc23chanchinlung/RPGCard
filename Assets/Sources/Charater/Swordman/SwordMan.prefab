@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5731907008096963222}
   - component: {fileID: 2857362072312934182}
   - component: {fileID: 7160813393065185943}
-  - component: {fileID: 8657070351586057315}
   - component: {fileID: 8995193577968729025}
   - component: {fileID: 6085230809282081415}
   m_Layer: 0
@@ -21,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6705497061780330720
 Transform:
   m_ObjectHideFlags: 0
@@ -58,6 +57,7 @@ MonoBehaviour:
   - {fileID: 2638277236182187418, guid: 9c239e5acb780584ca40f30022308af6, type: 3}
   - {fileID: 1325853565380214911, guid: 6427e531cfaa54647b809ff42e3a2bf0, type: 3}
   - {fileID: 6896723264366298177, guid: d69f747ee10c0e74783137588b505a5d, type: 3}
+  _hpBar: {fileID: 0}
   _jobAttackArrays: []
   _enemy: {fileID: 0}
   _SwordManAttackArrays:
@@ -86,6 +86,7 @@ MonoBehaviour:
   _enemy: {fileID: 0}
   Max_chanceLimit: 3
   _screenEffect: {fileID: 0}
+  _playerOrigin: {fileID: 0}
 --- !u!212 &7160813393065185943
 SpriteRenderer:
   serializedVersion: 2
@@ -145,33 +146,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!50 &8657070351586057315
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5268627691697611475}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &8995193577968729025
 BoxCollider2D:
   m_ObjectHideFlags: 0

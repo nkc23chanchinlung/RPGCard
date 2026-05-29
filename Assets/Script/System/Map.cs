@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
-   public int _nowPoint = 0; //現在のポイント
+    public int _nowPoint = 0; //現在のポイント
     enum MapPoint
     {
         Null,
@@ -19,26 +19,32 @@ public class Map : MonoBehaviour
     [SerializeField]
     Sprite[] point_Sprite; //0:旗 1:宝箱 2:敵 3:ボス 
 
-    [SerializeField] GameObject []_point;
+    [SerializeField] GameObject[] _point;
     [SerializeField] GameObject navigation;
+
+
+
 
     void Start()
     {
         RandomMap();
+
+      
     }
 
-    void RandomMap()
+     void RandomMap()
     {
         for (int i = 0; i < _point.Length; i++)
         {
             Image img = _point[i].GetComponent<Image>();
-            img.sprite=point_Sprite[Random.Range(0, point_Sprite.Length)];
+            img.sprite = point_Sprite[Random.Range(0, point_Sprite.Length)];
         }
-       
-        
+
+
+
     }
 
- 
+
     /// <summary>
     /// ナビゲーションのマーク移動させる関数
     /// </summary>
@@ -53,4 +59,8 @@ public class Map : MonoBehaviour
             _nowPoint++;
         }
     }
+  
+  
+     
 }
+   

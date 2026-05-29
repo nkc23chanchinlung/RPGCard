@@ -360,9 +360,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74be7b017835a644390e7cd8e20362e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  IsGameInit: 0
   _debug_Mode_Toggle: {fileID: 0}
   _isDebugMode: 0
-  _charactorlist: []
+  _charactorlist:
+  - {fileID: 99397726516911364, guid: 78c1994ce4bbe2c46ac92b27b8f2ee0b, type: 3}
+  - {fileID: 5268627691697611475, guid: 04e0f860f434fe048981e6f4f0949ae7, type: 3}
 --- !u!4 &512222012
 Transform:
   m_ObjectHideFlags: 0

@@ -1,10 +1,8 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using NUnit.Framework;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 /// <summary>
 /// 敵の基底クラス
 /// </summary>
@@ -25,30 +23,25 @@ public class EnemyBase : MonoBehaviour
     public List<Card> CardList;
 
 
-
-
-    private void Awake()
-    {
-        
-    }
-   
-   
+    
     /// <summary>
     /// ダメージ受ける関数
     /// </summary>
     /// <param name="Dmg">受けるダメージ量</param>
     public void TakeDamage(int Dmg)
     {
+        //振動のパラメータ
         float duration = 0.1f;
         float strength = 0.2f;
 
-        Hp -= Dmg;
-
-        
-        UiManager.Instance.CreateDmg_Text(transform, Dmg).Forget();
-       Shake(duration, strength).Forget();
-
-
+        //処理
+        DamageCale(Dmg, Defense, () =>
+        {
+            UiManager.Instance.CreateDmg_Text(transform, Dmg).Forget();
+            Shake(duration, strength).Forget();
+        });
+    
+   
         if (Hp <= 0)
         {
             Destroy(gameObject);
@@ -112,8 +105,16 @@ public class EnemyBase : MonoBehaviour
        // CardList[CardNum].SetCardDebuff(Card.Debuff.Water);
        
     }
+    /// <summary>
+    /// ダメージ計算関数
+    /// </summary>
+    /// <param name="dmg"></param>
+    /// <param name="def"></param>
+    /// <param name="callback"></param>
+    void DamageCale(int dmg,int def, Action callback)
+    {
+        Hp = Mathf.Max(Hp - Mathf.Max(dmg - def, 0), 0);
 
-
-
-
+       callback?.Invoke();
+    }
 }

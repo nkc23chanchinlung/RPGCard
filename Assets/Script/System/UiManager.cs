@@ -190,9 +190,11 @@ public class UiManager : MonoBehaviour
     }
     public void Exit()
     {
+        GameManager.Instance.GameExit();
         SceneManager.LoadScene("TitleScene");
         //GameManager.IsGameStart = false;
-        GameManager.Instance.GameStart = false;
+      
+        
 
     }
   

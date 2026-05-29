@@ -16,6 +16,7 @@ public class SelcetManager : MonoBehaviour
     void Start()
     {
         _mask.SetActive(false);
+        GameManager.OnGameStart += OnGameStart;
     }
 
     // Update is called once per frame
@@ -28,6 +29,10 @@ public class SelcetManager : MonoBehaviour
             GameManager.Instance.PlayingCharactorId = sum;
             spotlight.transform.position = charactorObj[sum].transform.position;
         }
+    }
+    public void OnGameStart()
+    {
+
     }
     /// <summary>
     /// マウス判定関数
