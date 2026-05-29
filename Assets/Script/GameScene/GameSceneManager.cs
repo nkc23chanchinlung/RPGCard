@@ -5,12 +5,15 @@ using System.Collections.Generic;
 //GameScene必要な関数クラス
 public class GameSceneManager : MonoBehaviour
 {
+    [SerializeField] List<GameObject> _charactorPreList;
     static public GameSceneManager Instance;
-    [SerializeField] public GameObject[] _charactorPreList;
+    public GameObject PlayerPre;
 
     [SerializeField]List<GameObject> _enemyPreList;
 
-    public List<GameObject> InstantedEnemyPreList;
+    //public List<GameObject> InstantedEnemyPreList;
+    public GameObject InstantedEnemyPreList;
+
 
 
     private void Awake()
@@ -23,7 +26,13 @@ public class GameSceneManager : MonoBehaviour
     /// <param name="charID">キャラID</param>
     public void InstandCharactor(int charID)
     {
-        Instantiate(_charactorPreList[charID],new Vector3(-10,3,0), Quaternion.identity);
+        PlayerPre = Instantiate(_charactorPreList[charID], new Vector3(-10, 3, 0), Quaternion.identity);
+        
+    }
+    public void InstandEnemy(int enemyID)
+    {
+        GameObject enemy = Instantiate(_enemyPreList[enemyID], new Vector3(5, 2, 0), Quaternion.identity);
+        InstantedEnemyPreList = enemy;
     }
 
 }

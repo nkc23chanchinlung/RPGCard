@@ -16,7 +16,7 @@ public class PlayerBase : MonoBehaviour
     Animator _animator;
     [SerializeField] Sprite[] _cardList; //カードリスト
     [SerializeField] GameObject[] _attackEffect;//0:斬撃 //1:サンダー
-    [SerializeField] Image _hpBar; //HPバー
+    public Image _hpBar; //HPバー
     //職業ごとの攻撃ルールを管理するリスト(読み込み専用)
     public List<JobAttackArray> _jobAttackArrays = new List<JobAttackArray>();
 

@@ -8,25 +8,39 @@ public sealed class Witch : PlayerBase
     PlayerController _controller;
     //魔女の攻撃ルールを管理するリスト(書き込み専用)
     [SerializeField]private List<JobAttackArray> _WitchAttackArrays  = new List<JobAttackArray>();
-    
 
+
+
+    Witch()
+    {
+        Debug.Log("Witch");
+        _jobAttackArrays = _WitchAttackArrays;
+        _hpBar = UiManager.Instance.Player_Hp_bar;
+        _controller.SelectCard();
+       
+        _controller = GetComponent<PlayerController>();
+        
+        Hp = MaxHP;
+    }
 
     private void OnEnable()
     {
-        _jobAttackArrays=_WitchAttackArrays;
+       
     }
     private void Awake()
     {
-        _controller = GetComponent<PlayerController>();
-   
-        
+       
+       
+
+
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Hp = MaxHP;
-       _controller.SelectCard();
+        
      
+       
+
     }
 
 }

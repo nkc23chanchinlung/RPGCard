@@ -71,6 +71,7 @@ public class SelcetManager : MonoBehaviour
                 {
                     GameManager.Instance.PlayingCharactorId = i;
                     GameManager.Instance.GameStart = true;
+                    GameManager.Instance.IsInit = false;
                     Debug.Log("GameStart:" + GameManager.Instance.GameStart);
                     _mask.SetActive(true);
                     Vector3 worldpos = Camera.main.WorldToScreenPoint(charactorObj[i].transform.position);

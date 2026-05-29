@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     public bool GameStart { get; set; }
     GameSceneManager _gameSceneManager;
     [SerializeField]GameObject[] _charactorlist;
-    bool _isInit = false;//初期化フラグ
+   public bool IsInit = false;//初期化フラグ
+ // public  bool testInit = false;
 
    
     
@@ -29,10 +30,11 @@ public class GameManager : MonoBehaviour
     //ゲーム開始するとき初期化
     public void GameInit(int charnum)
     {
-        _charactorlist = GameSceneManager.Instance._charactorPreList;
-        InstanceCharactor(charnum);
-        OnGameStart?.Invoke();
-        
+        //_charactorlist = GameSceneManager.Instance.InstancecharactorList;
+        //InstanceCharactor(charnum);
+        GameSceneManager.Instance.InstandCharactor(charnum);
+        //OnGameStart?.Invoke();
+        IsInit = true;
 
 
     }
@@ -41,23 +43,30 @@ public class GameManager : MonoBehaviour
     {
       //  string SceneName =SceneManager.GetActiveScene().name;
         CheakGameManagerExist();
-
+       
     }
     private void FixedUpdate()
     {
         if(_debug_Mode_Toggle!=null)
         _isDebugMode = _debug_Mode_Toggle.isOn;
 
-        if (!GameStart) _isInit=false;
+        //if (!GameStart) _isInit=false;
     }
     // Update is called once per frame
     void Update()
     {
-        if (_isInit == false && SceneManager.GetActiveScene().name == "GameScene")
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            GameSceneManager.Instance.InstandEnemy(0);
+        }
+      //  Debug.Log("IsInit:" + _isInit);
+        if (IsInit == false && SceneManager.GetActiveScene().name == "GameScene")
         {
             GameInit(PlayingCharactorId);
-            _isInit=true;
+            //_isInit=true;
         }
+
+        
     }
     void InstanceCharactor(int num)
     {

@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
     {
         Instance = this;
         _chanceLimit = Max_chanceLimit;
-        _enemy = GameObject.FindWithTag("Enemy");
-        _player=gameObject.GetComponent<PlayerBase>();
+       
+        _player =gameObject.GetComponent<PlayerBase>();
     }
     void Start()
     {
@@ -37,7 +37,11 @@ public class PlayerController : MonoBehaviour
     {
         SelectCard();
         ListManagement(_cardLimit);
-     
+        if (GameSceneManager.Instance.InstantedEnemyPreList != null)
+        {
+            _enemy = GameSceneManager.Instance.InstantedEnemyPreList;
+        }
+
     }
     private void OnEnable()
     {
@@ -235,7 +239,7 @@ public class PlayerController : MonoBehaviour
     }
     async UniTask VecterOrigin()
     {
-        var originworldpos = Camera.main.ScreenToWorldPoint(_playerOrigin.position);
+        var originworldpos = Camera.main.ScreenToWorldPoint(new Vector3(298,311,0));
         transform.DOMoveX(originworldpos.x, 1f);
     }
 }

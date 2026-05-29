@@ -47,9 +47,9 @@ public class CardManager : MonoBehaviour
     async  UniTaskVoid OnGameStartAsync()
     {
         await UniTask.Yield();
-        _player = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+        _player = GameSceneManager.Instance.PlayerPre.GetComponent<PlayerBase>();
         //_dataManager = DataManager.Instance;
-        
+
         InstantCardList = new List<Card>();
         await UniTask.Yield();
         InstanceCard(2.0f, -4).Forget();
@@ -75,7 +75,7 @@ public class CardManager : MonoBehaviour
         }
         if (!GameManager.Instance.IsGameInit)
         {
-            _player = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+            _player = GameSceneManager.Instance.PlayerPre.GetComponent<PlayerBase>();
             InstanceCard(2.0f, -4).Forget();
             _cardSprite = _player.GetCardList();
 
@@ -161,10 +161,10 @@ public class CardManager : MonoBehaviour
 
                 if (cardA == cardB)
                 {
-                    Debug.Log(cardA+","+ cardB);
+                    //Debug.Log(cardA+","+ cardB);
                     cardA = -1;
                     cardB = -1;
-                    Debug.Log("同じカードがある");
+                    //Debug.Log("同じカードがある");
                     _sameCardValue++;
                 }
                

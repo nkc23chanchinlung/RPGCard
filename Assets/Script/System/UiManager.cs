@@ -8,7 +8,7 @@ public class UiManager : MonoBehaviour
 {
     public static UiManager Instance;
 
-
+    public Image Player_Hp_bar;
     [SerializeField] Text _debug_Text;
     [SerializeField] GameObject _dmg_Text_Prefab;
     [SerializeField] GameObject _gameCanvas;

@@ -13,18 +13,14 @@ public sealed class Slime : EnemyBase
 
     private void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
+         
+    }
+    Slime()
+    {
+        player = GameSceneManager.Instance.PlayerPre.GetComponent<PlayerBase>();
 
     }
-    private void OnEnable()
-    {
-        try
-        {
-            player = GameObject.FindWithTag("Player").GetComponent<PlayerBase>();
-        } catch { 
-        Debug.LogError("PlayerBaseコンポーネントが見つかりませんでした。PlayerオブジェクトにPlayerBaseコンポーネントがアタッチされていることを確認してください。");
-        }
-    }
+
     // Update is called once per frame
     void Update()
     {

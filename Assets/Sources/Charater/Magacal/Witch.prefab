@@ -61,7 +61,41 @@ MonoBehaviour:
   - {fileID: 1325853565380214911, guid: 6427e531cfaa54647b809ff42e3a2bf0, type: 3}
   - {fileID: 6896723264366298177, guid: d69f747ee10c0e74783137588b505a5d, type: 3}
   - {fileID: 2638277236182187418, guid: 9c239e5acb780584ca40f30022308af6, type: 3}
-  _enemy: {fileID: 0}
+  _hpBar: {fileID: 0}
+  _jobAttackArrays:
+  - SkillName: Slash
+    AttackPower: 5
+    atkEffectIndex: 0
+    patten: 0
+  - SkillName: Thunder
+    AttackPower: 30
+    atkEffectIndex: 1
+    patten: 1
+  - SkillName: Fireball
+    AttackPower: 20
+    atkEffectIndex: 2
+    patten: 2
+  - SkillName: Ice
+    AttackPower: 25
+    atkEffectIndex: 3
+    patten: 1
+  _WitchAttackArrays:
+  - SkillName: Slash
+    AttackPower: 5
+    atkEffectIndex: 0
+    patten: 0
+  - SkillName: Thunder
+    AttackPower: 30
+    atkEffectIndex: 1
+    patten: 1
+  - SkillName: Fireball
+    AttackPower: 20
+    atkEffectIndex: 2
+    patten: 2
+  - SkillName: Ice
+    AttackPower: 25
+    atkEffectIndex: 3
+    patten: 1
 --- !u!114 &100438414803858807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,11 +110,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _selectedCard: []
   _cardLimit: 1
-  battleManager: {fileID: 0}
   _enemy: {fileID: 0}
-  _attackEffect: []
   Max_chanceLimit: 3
   _screenEffect: {fileID: 0}
+  _playerOrigin: {fileID: 0}
 --- !u!212 &3361400694954386840
 SpriteRenderer:
   serializedVersion: 2
